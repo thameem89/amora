@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Amora Noir — Luxury perfume and fragrance. Discover timeless elegance crafted for you. Shop our exclusive Arabian luxury perfume collections." />
+  <title>Amora Noir | Luxury Perfume &amp; Fragrance</title>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Favicon placeholder -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       ANNOUNCEMENT BAR
+       ============================================================ -->
+  <div class="announcement-bar" role="banner" aria-label="Promotional announcement">
+    <div class="container">
+      <p>✦ &nbsp; Complimentary UAE delivery on orders over AED 300 &nbsp; ✦ &nbsp; Free gift wrapping on all orders &nbsp; ✦</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       HEADER / NAVIGATION
+       ============================================================ -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="container">
+      <div class="header-inner">
+
+        <!-- Logo -->
+        <a href="index.html" class="header-logo" aria-label="Amora Noir — Home">
+          <img src="assets/amora_noir_logo_high_quality.webp" alt="Amora Noir" class="logo-img" />
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="header-nav" aria-label="Main navigation">
+          <a href="index.html" class="active" id="nav-home">Home</a>
+          <a href="shop.html" id="nav-shop">Shop</a>
+          <a href="story.html" id="nav-ourstory">Our Story</a>
+          <a href="contact.html" id="nav-contact">Contact</a>
+        </nav>
+        <div class="header-actions" role="group" aria-label="Header actions">
+          <button class="header-action-btn" id="search-btn" aria-label="Search">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+          </button>
+          <button class="header-action-btn" id="account-btn" aria-label="My account">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </button>
+          <button class="header-action-btn" id="cart-btn" aria-label="Shopping cart — 2 items">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+            <span class="cart-count" aria-hidden="true">2</span>
+          </button>
+          <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="header-logo" aria-label="Amora Noir — Home">
+        <img src="assets/amora_noir_logo_high_quality.webp" alt="Amora Noir" class="logo-img" />
+      </a>
+      <button class="mobile-close" id="mobile-close-btn" aria-label="Close menu">✕</button>
+    </div>
+    <div class="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="story.html">Our Story</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- ============================================================
+         HERO SLIDER
+         ============================================================ -->
+    <section class="hero-slider" aria-label="Featured collections slider" id="hero-slider">
+
+      <div class="hero-track" id="hero-track" role="region" aria-live="polite">
+
+        <!-- Slide 1: Golden Elixir -->
+        <article class="hero-slide" aria-label="Golden Elixir — Slide 1 of 3">
+          <a href="golden-elixir.html" class="hero-slide-link" tabindex="-1" aria-hidden="true">
+            <img src="assets/amora_banner_1.webp" alt="Golden Elixir Collection Banner" class="hero-banner-img mobile-only" loading="lazy">
+            <img src="assets/amora_banner_1.webp" alt="Golden Elixir Collection Banner" class="hero-banner-img desktop-only" fetchpriority="high">
+          </a>
+          <div class="hero-slide-overlay" aria-hidden="true"></div>
+          <div class="hero-slide-content">
+            <span class="hero-slide-label">Amber &amp; Spices</span>
+            <h1 class="hero-slide-title">Golden Elixir</h1>
+            <p class="hero-slide-tagline">Warm golden sweetness blended<br>with deep sensual luxury.</p>
+            <a href="golden-elixir.html" class="hero-slide-cta" id="hero-cta-golden">
+              Shop Now
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Slide 2: Fleur d'Or -->
+        <article class="hero-slide" aria-label="Fleur d'Or — Slide 2 of 3">
+          <a href="fleur-dor.html" class="hero-slide-link" tabindex="-1" aria-hidden="true">
+            <img src="assets/amora_banner_2.webp" alt="Fleur d'Or Collection Banner" class="hero-banner-img mobile-only" loading="lazy">
+            <img src="assets/amora_banner_2.webp" alt="Fleur d'Or Collection Banner" class="hero-banner-img desktop-only" loading="lazy">
+          </a>
+          <div class="hero-slide-overlay" aria-hidden="true"></div>
+          <div class="hero-slide-content">
+            <span class="hero-slide-label">Floral &amp; Soft</span>
+            <h2 class="hero-slide-title">Fleur d'Or</h2>
+            <p class="hero-slide-tagline">A graceful floral scent that feels<br>romantic and timeless.</p>
+            <a href="fleur-dor.html" class="hero-slide-cta" id="hero-cta-fleur">
+              Shop Now
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Slide 3: Royal Oud Noir -->
+        <article class="hero-slide" aria-label="Royal Oud Noir — Slide 3 of 3">
+          <a href="royal-oud-noir.html" class="hero-slide-link" tabindex="-1" aria-hidden="true">
+            <img src="assets/amora_banner_3.webp" alt="Royal Oud Noir Collection Banner" class="hero-banner-img mobile-only" loading="lazy">
+            <img src="assets/amora_banner_3.webp" alt="Royal Oud Noir Collection Banner" class="hero-banner-img desktop-only" loading="lazy">
+          </a>
+          <div class="hero-slide-overlay" aria-hidden="true"></div>
+          <div class="hero-slide-content">
+            <span class="hero-slide-label">Oud &amp; Woody</span>
+            <h2 class="hero-slide-title">Royal Oud Noir</h2>
+            <p class="hero-slide-tagline">A rich, royal fragrance for a<br>strong and confident presence.</p>
+            <a href="royal-oud-noir.html" class="hero-slide-cta" id="hero-cta-oud">
+              Shop Now
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+          </div>
+        </article>
+
+
+      </div><!-- /hero-track -->
+
+      <!-- Slider Arrows -->
+      <button class="slider-arrow slider-arrow-prev" id="slider-prev" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+      </button>
+      <button class="slider-arrow slider-arrow-next" id="slider-next" aria-label="Next slide">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m9 18 6-6-6-6"/>
+        </svg>
+      </button>
+
+      <!-- Slider Dots -->
+      <div class="slider-dots" role="tablist" aria-label="Slider navigation">
+        <button class="slider-dot active" id="dot-0" role="tab" aria-selected="true" aria-label="Go to slide 1"></button>
+        <button class="slider-dot" id="dot-1" role="tab" aria-selected="false" aria-label="Go to slide 2"></button>
+        <button class="slider-dot" id="dot-2" role="tab" aria-selected="false" aria-label="Go to slide 3"></button>
+      </div>
+
+    </section>
+    <!-- /hero-slider -->
+
+    <!-- ============================================================
+         FEATURE STRIP
+         ============================================================ -->
+    <div class="feature-strip" role="complementary" aria-label="Brand features">
+      <div class="container">
+        <div class="feature-strip-grid">
+
+          <div class="feature-item fade-up">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5V11h2l1 3H7l1-3h2V9.5C8.8 8.8 8 7.5 8 6a4 4 0 0 1 4-4z"/>
+                <path d="M8 21h8M12 18v3"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <h4>Luxury Ingredients</h4>
+              <p>Sourced from the finest around the world</p>
+            </div>
+          </div>
+
+          <div class="feature-item fade-up">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <h4>Timeless Craftsmanship</h4>
+              <p>Blended with passion, crafted to perfection</p>
+            </div>
+          </div>
+
+          <div class="feature-item fade-up">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <h4>Elegant Packaging</h4>
+              <p>Designed to delight, made to be remembered</p>
+            </div>
+          </div>
+
+          <div class="feature-item fade-up">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                <line x1="9" y1="9" x2="9.01" y2="9"/>
+                <line x1="15" y1="9" x2="15.01" y2="9"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <h4>Long-Lasting Scents</h4>
+              <p>Captivating aromas that stay with you</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- /feature-strip -->
+
+
+
+
+    <!-- ============================================================
+         PROMOTIONAL STRIP BANNER
+         ============================================================ -->
+    <section class="section-promo-banner" aria-label="The Scent Experience">
+      <div class="promo-banner-wrap">
+        <img src="assets/lifestyle/strip-banner.webp" alt="Amora Noir — Where fragrance becomes a feeling. Crafted for elegance, inspired by timeless allure." loading="lazy" />
+      </div>
+    </section>
+    <!-- /promotional-banner -->
+
+    <!-- ============================================================
+         STORY BANNER
+         ============================================================ -->
+    <section class="section-story" id="story" aria-label="Our brand story">
+
+      <div class="story-image-side">
+        <div class="story-image-overlay" aria-hidden="true"></div>
+        <img src="assets/lifestyle/story-banner.webp" alt="Elegant hands holding an Amora Noir perfume bottle surrounded by candlelight and golden Arabian decor" loading="lazy" width="640" height="520" />
+      </div>
+
+      <div class="story-text-side">
+        <div class="story-text-inner">
+          <span class="section-label">Welcome to Amora Noir</span>
+          <h2 class="section-title" style="font-size:clamp(26px,2.5vw,36px);margin:12px 0 24px;line-height:1.25;">
+            Elegance, Confidence &amp;<br/>Timeless Allure
+          </h2>
+          <p style="font-size:13px;font-weight:300;color:var(--text-secondary);line-height:1.85;margin-bottom:14px;">
+            At Amora Noir, fragrance is more than a scent — it's an expression of elegance, confidence, and timeless allure. Inspired by the beauty of luxury and the mystery of the night, our carefully crafted perfumes are designed to leave a lasting impression.
+          </p>
+          <p style="font-size:13px;font-weight:300;color:var(--text-secondary);line-height:1.85;margin-bottom:36px;">
+            From captivating floral notes to rich oriental blends, every bottle tells a story of sophistication and individuality. Discover your signature scent and experience the essence of Amora Noir.
+          </p>
+          <a href="shop.html" class="btn-gold-outline" id="story-discover-btn">
+            Explore the Collection
+            <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" aria-hidden="true">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </section>
+    <!-- /story -->
+
+    <!-- ============================================================
+         BEST SELLERS
+         ============================================================ -->
+    <section class="section-bestsellers" id="bestsellers" aria-label="Best selling fragrances">
+      <div class="container">
+
+        <header class="section-header">
+          <span class="section-label">Best Sellers</span>
+          <h2 class="section-title">Our Most Loved</h2>
+          <div class="section-divider" aria-hidden="true"></div>
+        </header>
+
+        <div class="bestsellers-track" id="bestsellers-track">
+
+          <article class="product-card fade-up">
+            <div class="product-card-image">
+              <img src="assets/products/fleur-damour.webp" alt="Fleur d'Or luxury perfume" loading="lazy" width="280" height="280" />
+            </div>
+            <div class="product-card-info">
+              <h3 class="product-card-name">Fleur d'Or</h3>
+              <a href="shop.html?filter=floral" class="product-card-link" id="bs-fleur-link">
+                Shop Now
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="product-card fade-up">
+            <div class="product-card-image">
+              <img src="assets/products/royal-oud-noir.webp" alt="Royal Oud Noir luxury perfume" loading="lazy" width="280" height="280" />
+            </div>
+            <div class="product-card-info">
+              <h3 class="product-card-name">Royal Oud Noir</h3>
+              <a href="shop.html?filter=oud" class="product-card-link" id="bs-oud-link">
+                Shop Now
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="product-card fade-up">
+            <div class="product-card-image">
+              <img src="assets/products/golden-elixir.png" alt="Golden Elixir luxury perfume" loading="lazy" width="280" height="280" />
+            </div>
+            <div class="product-card-info">
+              <h3 class="product-card-name">Golden Elixir</h3>
+              <a href="shop.html?filter=amber" class="product-card-link" id="bs-golden-link">
+                Shop Now
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- /bestsellers -->
+
+    <!-- ============================================================
+         SERVICE STRIP
+         ============================================================ -->
+    <div class="service-strip" role="complementary" aria-label="Our services and guarantees">
+      <div class="container">
+        <div class="service-grid">
+
+          <div class="service-item fade-up">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <div class="service-text">
+              <h4>Premium Quality</h4>
+              <p>Finest ingredients, uncompromised craftsmanship</p>
+            </div>
+          </div>
+
+          <div class="service-item fade-up">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="1" y="3" width="15" height="13" rx="1"/>
+                <path d="M16 8h4l3 3v5h-7V8z"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/>
+                <circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            <div class="service-text">
+              <h4>Complimentary Shipping</h4>
+              <p>Free UAE delivery on orders over AED 300</p>
+            </div>
+          </div>
+
+          <div class="service-item fade-up">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <polyline points="1 4 1 10 7 10"/>
+                <path d="M3.51 15a9 9 0 1 0 .49-3"/>
+              </svg>
+            </div>
+            <div class="service-text">
+              <h4>Easy Returns</h4>
+              <p>Hassle-free returns within 14 days</p>
+            </div>
+          </div>
+
+          <div class="service-item fade-up">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>
+            <div class="service-text">
+              <h4>Secure Payments</h4>
+              <p>100% encrypted and secure transactions</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- /service-strip -->
+
+    <!-- ============================================================
+         NEWSLETTER
+         ============================================================ -->
+    <section class="section-newsletter" aria-label="Newsletter subscription">
+      <div class="container">
+        <div class="newsletter-inner">
+          <span class="section-label">Exclusive Access</span>
+          <h2 class="section-title">Be the first to Experience</h2>
+          <p class="newsletter-desc">Join our community for exclusive offers, new launches, and the art of fine fragrance delivered to your inbox.</p>
+          <form class="newsletter-form" id="newsletter-form" novalidate aria-label="Newsletter subscription form">
+            <label for="newsletter-email" class="sr-only">Email address</label>
+            <input
+              type="email"
+              id="newsletter-email"
+              name="email"
+              class="newsletter-input"
+              placeholder="Your email address"
+              autocomplete="email"
+              required
+              aria-required="true"
+            />
+            <button type="submit" class="newsletter-submit" id="newsletter-submit-btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- /newsletter -->
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+
+          <!-- Brand Column -->
+          <div class="footer-col footer-brand">
+            <a href="index.html" class="footer-brand-logo header-logo" aria-label="Amora Noir — Home">
+              <img src="assets/amora_noir_logo_high_quality.webp" alt="Amora Noir" class="logo-img" />
+            </a>
+            <p class="footer-brand-tagline">
+              Timeless elegance, crafted for you. Discover the art of fine fragrance — where every drop tells a story of luxury and heritage.
+            </p>
+            <div class="footer-social" aria-label="Follow us on social media">
+              <a href="#" class="social-link" id="footer-instagram" aria-label="Follow us on Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                </svg>
+              </a>
+              <a href="#" class="social-link" id="footer-facebook" aria-label="Follow us on Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+              </a>
+              <a href="#" class="social-link" id="footer-tiktok" aria-label="Follow us on TikTok">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                </svg>
+              </a>
+              <a href="#" class="social-link" id="footer-youtube" aria-label="Follow us on YouTube">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+                  <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Shop Column -->
+          <div class="footer-col">
+            <h3 class="footer-col-title">Shop</h3>
+            <ul>
+              <li><a href="shop.html" id="footer-all-products">All Products</a></li>
+              <li><a href="index.html#bestsellers" id="footer-bestsellers">Best Sellers</a></li>
+              <li><a href="shop.html" id="footer-new-arrivals">New Arrivals</a></li>
+            </ul>
+          </div>
+
+          <!-- Company Column -->
+          <div class="footer-col">
+            <h3 class="footer-col-title">Company</h3>
+            <ul>
+              <li><a href="story.html" id="footer-ourstory">Our Story</a></li>
+              <li><a href="story.html#sustainability" id="footer-sustainability">Sustainability</a></li>
+              <li><a href="story.html#blog" id="footer-blog">Blog</a></li>
+            </ul>
+          </div>
+
+          <!-- Customer Care Column -->
+          <div class="footer-col">
+            <h3 class="footer-col-title">Customer Care</h3>
+            <ul>
+              <li><a href="#" id="footer-contact">Contact Us</a></li>
+              <li><a href="#" id="footer-faq">FAQ</a></li>
+              <li><a href="#" id="footer-shipping">Shipping &amp; Delivery</a></li>
+              <li><a href="#" id="footer-returns">Returns &amp; Exchanges</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-inner">
+          <p class="footer-copyright">© 2025 Amora Noir. All rights reserved.</p>
+          <nav class="footer-legal" aria-label="Legal pages">
+            <a href="#" id="footer-terms">Terms &amp; Conditions</a>
+            <a href="#" id="footer-privacy">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Visually hidden utility -->
+  <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+
+  <!-- ============================================================
+       JAVASCRIPT
+       ============================================================ -->
+  <script>
+    'use strict';
+
+    /* === HERO SLIDER === */
+    (function () {
+      const track = document.getElementById('hero-track');
+      const dots = document.querySelectorAll('.slider-dot');
+      const prevBtn = document.getElementById('slider-prev');
+      const nextBtn = document.getElementById('slider-next');
+      const slides = document.querySelectorAll('.hero-slide');
+      let currentIndex = 0;
+      let autoplayTimer = null;
+      const SLIDE_COUNT = slides.length;
+
+      function goToSlide(index) {
+        currentIndex = (index + SLIDE_COUNT) % SLIDE_COUNT;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === currentIndex);
+          dot.setAttribute('aria-selected', i === currentIndex ? 'true' : 'false');
+        });
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === currentIndex);
+        });
+      }
+
+      // Init: activate first slide
+      goToSlide(0);
+
+
+      function startAutoplay() {
+        autoplayTimer = setInterval(() => goToSlide(currentIndex + 1), 5000);
+      }
+
+      function stopAutoplay() {
+        clearInterval(autoplayTimer);
+      }
+
+      prevBtn.addEventListener('click', () => {
+        stopAutoplay();
+        goToSlide(currentIndex - 1);
+        startAutoplay();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        stopAutoplay();
+        goToSlide(currentIndex + 1);
+        startAutoplay();
+      });
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          stopAutoplay();
+          goToSlide(i);
+          startAutoplay();
+        });
+      });
+
+      // Touch/Swipe support
+      let touchStartX = 0;
+      const sliderEl = document.getElementById('hero-slider');
+      sliderEl.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+      }, { passive: true });
+      sliderEl.addEventListener('touchend', (e) => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+          stopAutoplay();
+          goToSlide(diff > 0 ? currentIndex + 1 : currentIndex - 1);
+          startAutoplay();
+        }
+      }, { passive: true });
+
+      // Pause on hover
+      sliderEl.addEventListener('mouseenter', stopAutoplay);
+      sliderEl.addEventListener('mouseleave', startAutoplay);
+
+      startAutoplay();
+    })();
+
+    /* === STICKY HEADER === */
+    (function () {
+      const header = document.getElementById('site-header');
+      const observer = new IntersectionObserver(
+        ([entry]) => header.classList.toggle('scrolled', !entry.isIntersecting),
+        { rootMargin: '-1px 0px 0px 0px', threshold: [1] }
+      );
+      const sentinel = document.createElement('div');
+      sentinel.style.cssText = 'position:absolute;top:0;height:1px;width:100%;pointer-events:none;';
+      document.body.insertBefore(sentinel, document.body.firstChild);
+      observer.observe(sentinel);
+    })();
+
+    /* === MOBILE MENU === */
+    (function () {
+      const hamburger = document.getElementById('hamburger-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const closeBtn = document.getElementById('mobile-close-btn');
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+
+      function openMenu() {
+        mobileMenu.style.display = 'flex';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            mobileMenu.classList.add('open');
+          });
+        });
+        document.body.style.overflow = 'hidden';
+        hamburger.setAttribute('aria-expanded', 'true');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeMenu() {
+        mobileMenu.classList.remove('open');
+        setTimeout(() => {
+          mobileMenu.style.display = 'none';
+        }, 400);
+        document.body.style.overflow = '';
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+      }
+
+      hamburger.addEventListener('click', openMenu);
+      closeBtn.addEventListener('click', closeMenu);
+      mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+          closeMenu();
+        }
+      });
+    })();
+
+    /* === SCROLL ANIMATIONS (Intersection Observer) === */
+    (function () {
+      const fadeEls = document.querySelectorAll('.fade-up');
+      if (!fadeEls.length) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+      fadeEls.forEach(el => observer.observe(el));
+    })();
+
+    /* === NEWSLETTER FORM === */
+    (function () {
+      const form = document.getElementById('newsletter-form');
+      if (!form) return;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const emailInput = document.getElementById('newsletter-email');
+        const submitBtn = document.getElementById('newsletter-submit-btn');
+        if (!emailInput.value || !emailInput.checkValidity()) {
+          emailInput.focus();
+          return;
+        }
+        submitBtn.textContent = 'Thank you!';
+        submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+        submitBtn.disabled = true;
+        emailInput.value = '';
+        setTimeout(() => {
+          submitBtn.textContent = 'Subscribe';
+          submitBtn.style.background = '';
+          submitBtn.disabled = false;
+        }, 4000);
+      });
+    })();
+
+    /* === DYNAMIC PRODUCTS RENDER === */
+    (function () {
+      const defaultProducts = [
+        {
+          id: "fleur-dor",
+          name: "Fleur d'Or",
+          sku: "AN-FL-01",
+          category: "Floral",
+          price: 299,
+          stock: 45,
+          description: "A timeless floral bouquet — roses in full bloom, carried on whispers of soft musk and warm sandalwood.",
+          image: "assets/products/fleur-damour.webp",
+          status: "Active",
+          sales: 120,
+          dateAdded: "2026-01-15"
+        },
+        {
+          id: "royal-oud-noir",
+          name: "Royal Oud Noir",
+          sku: "AN-RO-02",
+          category: "Oud",
+          price: 399,
+          stock: 12,
+          description: "Indulge in the art of fine fragrance with Amora Noir. Where Arabian heritage meets modern elegance.",
+          image: "assets/products/royal-oud-noir.webp",
+          status: "Active",
+          sales: 85,
+          dateAdded: "2026-02-20"
+        },
+        {
+          id: "golden-elixir",
+          name: "Golden Elixir",
+          sku: "AN-GE-03",
+          category: "Amber",
+          price: 499,
+          stock: 24,
+          description: "Liquid gold in a bottle. A warm, opulent accord of amber, oud, and precious spices — unforgettable.",
+          image: "assets/products/golden-elixir.png",
+          status: "Active",
+          sales: 98,
+          dateAdded: "2026-03-05"
+        }
+      ];
+
+      // Initialize products
+      if (!localStorage.getItem('amora_products')) {
+        localStorage.setItem('amora_products', JSON.stringify(defaultProducts));
+      }
+
+      // Initialize default orders if not exists (for dashboard charts)
+      const defaultOrders = [
+        { id: "ORD-9821", customer: "Fatima Al Maktoum", email: "fatima@domain.ae", date: "2026-06-20", total: 798, status: "Delivered", items: "Royal Oud Noir (2)" },
+        { id: "ORD-9820", customer: "Zaid Al-Suwaidi", email: "zaid@domain.ae", date: "2026-06-19", total: 299, status: "Shipped", items: "Fleur d'Or (1)" },
+        { id: "ORD-9819", customer: "Sarah Connor", email: "sarah@domain.com", date: "2026-06-18", total: 499, status: "Processing", items: "Golden Elixir (1)" },
+        { id: "ORD-9818", customer: "Hamdan Al-Jaber", email: "hamdan@domain.ae", date: "2026-06-18", total: 1097, status: "Delivered", items: "Golden Elixir (1), Royal Oud Noir (1), Fleur d'Or (1)" },
+        { id: "ORD-9817", customer: "Amna Al-Qassimi", email: "amna@domain.ae", date: "2026-06-16", total: 399, status: "Pending", items: "Royal Oud Noir (1)" }
+      ];
+      if (!localStorage.getItem('amora_orders')) {
+        localStorage.setItem('amora_orders', JSON.stringify(defaultOrders));
+      }
+
+      function renderProducts() {
+        const products = JSON.parse(localStorage.getItem('amora_products')) || [];
+        const activeProducts = products.filter(p => p.status === 'Active');
+
+        const colGrid = document.getElementById('collection-grid');
+        const bsTrack = document.getElementById('bestsellers-track');
+
+        if (colGrid) {
+          colGrid.innerHTML = activeProducts.map((p) => `
+            <article class="collection-card fade-up visible">
+              <div class="collection-card-image">
+                <img src="${p.image}" alt="${p.name} — ${p.category} luxury perfume" loading="lazy" width="400" height="533" />
+              </div>
+              <div class="collection-card-info">
+                <h3 class="collection-card-name">${p.name}</h3>
+                <a href="#" class="collection-card-link" id="col-${p.id}-link">
+                  Shop Now
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m9 18 6-6-6-6"/>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          `).join('');
+        }
+
+        if (bsTrack) {
+          bsTrack.innerHTML = activeProducts.map((p) => `
+            <article class="product-card fade-up visible">
+              <div class="product-card-image">
+                <img src="${p.image}" alt="${p.name} luxury perfume" loading="lazy" width="280" height="280" />
+              </div>
+              <div class="product-card-info">
+                <h3 class="product-card-name">${p.name}</h3>
+                <a href="#" class="product-card-link" id="bs-${p.id}-link">
+                  Shop Now
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m9 18 6-6-6-6"/>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          `).join('');
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', renderProducts);
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        renderProducts();
+      }
+    })();
+  </script>
+
+</body>
+</html>

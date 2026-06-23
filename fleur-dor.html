@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Fleur d'Or by Amora Noir — A luminous floral bouquet kissed with golden amber. Neroli, Rose Absolue, Golden Musk. 100ml EDP." />
+  <title>Fleur d'Or | Amora Noir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar" role="banner" aria-label="Promotional announcement">
+    <div class="container">
+      <p>✦ &nbsp; Complimentary UAE delivery on orders over AED 300 &nbsp; ✦ &nbsp; Free gift wrapping on all orders &nbsp; ✦</p>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="header-logo" aria-label="Amora Noir — Home">
+          <img src="assets/amora_noir_logo_high_quality.webp" alt="Amora Noir" class="logo-img" />
+        </a>
+        <nav class="header-nav" aria-label="Main navigation">
+          <a href="index.html" id="nav-home">Home</a>
+          <a href="shop.html" class="active" id="nav-shop">Shop</a>
+          <a href="story.html" id="nav-ourstory">Our Story</a>
+          <a href="contact.html" id="nav-contact">Contact</a>
+        </nav>
+        <div class="header-actions" role="group" aria-label="Header actions">
+          <button class="header-action-btn" id="search-btn" aria-label="Search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </button>
+          <button class="header-action-btn" id="account-btn" aria-label="My account">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </button>
+          <button class="header-action-btn" id="cart-btn" aria-label="Shopping cart">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </button>
+          <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="header-logo" aria-label="Amora Noir — Home">
+        <img src="assets/amora_noir_logo_high_quality.webp" alt="Amora Noir" class="logo-img" />
+      </a>
+      <button class="mobile-close" id="mobile-close-btn" aria-label="Close menu">✕</button>
+    </div>
+    <div class="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="story.html">Our Story</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+
+      <!-- BREADCRUMB -->
+      <nav class="product-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="product-breadcrumb-sep">›</span>
+        <a href="shop.html">Shop</a>
+        <span class="product-breadcrumb-sep">›</span>
+        <span class="product-breadcrumb-current">Fleur d'Or</span>
+      </nav>
+
+      <!-- PRODUCT DETAIL -->
+      <section class="product-detail-section" aria-label="Fleur d'Or product detail">
+        <div class="product-detail-grid">
+
+          <!-- Gallery Column -->
+          <div class="product-gallery-col">
+            <div class="product-gallery-main">
+              <img
+                id="pd-main-img"
+                class="product-gallery-main-img"
+                src="assets/products/fleur-dor-01_amora_noir_fleur_dor_hero.webp"
+                alt="Fleur d'Or — main view"
+              />
+            </div>
+            <div class="product-gallery-thumbs" id="pd-thumbs" role="list" aria-label="Product images">
+              <img src="assets/products/fleur-dor-01_amora_noir_fleur_dor_hero.webp"           class="product-gallery-thumb active" alt="Fleur d'Or hero"          role="listitem" data-idx="0" />
+              <img src="assets/products/fleur-dor-02_amora_noir_product_display_angle.webp"   class="product-gallery-thumb"        alt="Fleur d'Or display angle" role="listitem" data-idx="1" />
+              <img src="assets/products/fleur-dor-03_amora_noir_bottle_closeup.webp"          class="product-gallery-thumb"        alt="Fleur d'Or bottle closeup" role="listitem" data-idx="2" />
+              <img src="assets/products/fleur-dor-04_amora_noir_female_model.webp"            class="product-gallery-thumb"        alt="Fleur d'Or female model"  role="listitem" data-idx="3" />
+              <img src="assets/products/fleur-dor-05_amora_noir_male_model_clean.webp"        class="product-gallery-thumb"        alt="Fleur d'Or male model"    role="listitem" data-idx="4" />
+            </div>
+          </div>
+
+          <!-- Info Column -->
+          <div class="product-info-col">
+            <span class="product-category-badge">Floral &amp; Soft</span>
+            <h1 class="product-detail-title">Fleur d'Or</h1>
+            <p class="product-tagline">"A graceful floral scent that feels romantic and timeless."</p>
+            <div class="product-divider"></div>
+
+            <p class="product-description">
+              Soft, feminine, and irresistibly elegant. Fleur d'Or opens with a bright, juicy accord of pear and mandarin,
+              lifted by a delicate touch of bergamot — fresh as a garden at first light. The heart unfolds into a lush bouquet
+              of rose, jasmine, and peony, romantic and full in bloom. The fragrance settles gracefully onto a base of white
+              musk, vanilla, and soft amber, leaving a tender, lingering trail that feels like a whisper of silk against skin.
+              Timeless femininity, captured in a bottle.
+            </p>
+
+            <!-- Fragrance Notes -->
+            <p class="product-notes-title">Fragrance Notes</p>
+            <div class="product-notes-grid">
+              <div class="product-note-group">
+                <span class="product-note-label">Top</span>
+                <div class="product-note-items">Pear<br>Mandarin<br>Bergamot</div>
+              </div>
+              <div class="product-note-group">
+                <span class="product-note-label">Heart</span>
+                <div class="product-note-items">Rose<br>Jasmine<br>Peony</div>
+              </div>
+              <div class="product-note-group">
+                <span class="product-note-label">Base</span>
+                <div class="product-note-items">White Musk<br>Vanilla<br>Soft Amber</div>
+              </div>
+            </div>
+
+            <!-- Price -->
+            <div class="product-price-row">
+              <div>
+                <div class="product-price">AED 450</div>
+                <div class="product-price-sub">Incl. VAT · Free UAE Shipping</div>
+              </div>
+              <span class="product-volume-tag">100 ml EDP</span>
+            </div>
+
+            <!-- Actions -->
+            <div class="product-actions">
+              <button class="btn-add-to-cart" id="fd-add-to-cart">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Add to Cart
+              </button>
+              <button class="btn-wishlist" id="fd-wishlist" aria-label="Add to wishlist">
+                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+            </div>
+
+            <!-- Guarantees -->
+            <div class="product-guarantees">
+              <div class="product-guarantee-item">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Authentic &amp; Sealed
+              </div>
+              <div class="product-guarantee-item">
+                <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                Free UAE Delivery
+              </div>
+              <div class="product-guarantee-item">
+                <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3"/></svg>
+                14-Day Returns
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACCORDION DETAILS -->
+      <section class="product-details-accordion" aria-label="Product details">
+        <div class="accordion-item open">
+          <button class="accordion-trigger" aria-expanded="true" id="acc-story-btn">
+            The Story
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body" id="acc-story-body" role="region" aria-labelledby="acc-story-btn">
+            <div class="accordion-content">
+              Fleur d'Or was born from the romance of a blooming garden — the soft morning light filtering through petals,
+              the sweetness of ripe fruit on the breeze, and the gentle warmth of a love that never fades. Our perfumer
+              wove together the freshness of pear and mandarin with an opulent heart of rose, jasmine, and peony, each
+              chosen for their natural radiance and depth. Anchored in white musk, vanilla, and soft amber, Fleur d'Or
+              is a fragrance of grace — romantic, timeless, and effortlessly beautiful.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" id="acc-how-btn">
+            How To Wear
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body" id="acc-how-body" role="region" aria-labelledby="acc-how-btn">
+            <div class="accordion-content">
+              Apply to pulse points — wrists, neck, and behind the ears — for optimal diffusion. For longevity, layer with
+              an unscented moisturiser before application. Fleur d'Or is a day-to-evening fragrance, ideal for occasions where
+              elegance is the dress code. Store upright, away from direct sunlight and extreme heat, to preserve the integrity of the scent.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" id="acc-ship-btn">
+            Shipping &amp; Returns
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body" id="acc-ship-body" role="region" aria-labelledby="acc-ship-btn">
+            <div class="accordion-content">
+              Complimentary standard shipping across the UAE on all orders. Express delivery available at checkout.
+              All orders are elegantly gift-wrapped at no extra charge. Returns accepted within 14 days of delivery for
+              unopened, sealed products. Please contact our concierge team for assistance.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col footer-brand">
+            <a href="index.html" class="footer-brand-logo header-logo" aria-label="Amora Noir — Home">
+              <img src="assets/amora_noir_logo_high_quality.webp" alt="Amora Noir" class="logo-img" />
+            </a>
+            <p class="footer-brand-tagline">Timeless elegance, crafted for you. Discover the art of fine fragrance.</p>
+            <div class="footer-social" aria-label="Follow us on social media">
+              <a href="#" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+              <a href="#" class="social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h3 class="footer-col-title">Shop</h3>
+            <ul>
+              <li><a href="shop.html">All Products</a></li>
+              <li><a href="fleur-dor.html">Fleur d'Or</a></li>
+              <li><a href="royal-oud-noir.html">Royal Oud Noir</a></li>
+              <li><a href="golden-elixir.html">Golden Elixir</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3 class="footer-col-title">Company</h3>
+            <ul>
+              <li><a href="story.html">Our Story</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3 class="footer-col-title">Customer Care</h3>
+            <ul>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Shipping &amp; Delivery</a></li>
+              <li><a href="#">Returns &amp; Exchanges</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-inner">
+          <p class="footer-copyright">© 2025 Amora Noir. All rights reserved.</p>
+          <nav class="footer-legal" aria-label="Legal pages">
+            <a href="#">Terms &amp; Conditions</a>
+            <a href="#">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    'use strict';
+
+    /* === STICKY HEADER === */
+    (function () {
+      const header = document.getElementById('site-header');
+      const observer = new IntersectionObserver(
+        ([entry]) => header.classList.toggle('scrolled', !entry.isIntersecting),
+        { rootMargin: '-1px 0px 0px 0px', threshold: [1] }
+      );
+      const sentinel = document.createElement('div');
+      sentinel.style.cssText = 'position:absolute;top:0;height:1px;width:100%;pointer-events:none;';
+      document.body.insertBefore(sentinel, document.body.firstChild);
+      observer.observe(sentinel);
+    })();
+
+    /* === MOBILE MENU === */
+    (function () {
+      const hamburger = document.getElementById('hamburger-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const closeBtn = document.getElementById('mobile-close-btn');
+      function openMenu() {
+        mobileMenu.style.display = 'flex';
+        requestAnimationFrame(() => requestAnimationFrame(() => mobileMenu.classList.add('open')));
+        document.body.style.overflow = 'hidden';
+        hamburger.setAttribute('aria-expanded', 'true');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+      }
+      function closeMenu() {
+        mobileMenu.classList.remove('open');
+        setTimeout(() => { mobileMenu.style.display = 'none'; }, 400);
+        document.body.style.overflow = '';
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+      }
+      hamburger.addEventListener('click', openMenu);
+      closeBtn.addEventListener('click', closeMenu);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+    })();
+
+    /* === PRODUCT GALLERY === */
+    (function () {
+      const mainImg = document.getElementById('pd-main-img');
+      const thumbs  = document.querySelectorAll('.product-gallery-thumb');
+
+      function setActive(idx) {
+        mainImg.classList.add('fading');
+        setTimeout(() => {
+          mainImg.src = thumbs[idx].src;
+          mainImg.alt = thumbs[idx].alt;
+          mainImg.classList.remove('fading');
+        }, 220);
+        thumbs.forEach((t, i) => t.classList.toggle('active', i === idx));
+      }
+
+      thumbs.forEach((t, i) => t.addEventListener('click', () => setActive(i)));
+    })();
+
+    /* === ACCORDION === */
+    (function () {
+      document.querySelectorAll('.accordion-trigger').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = btn.closest('.accordion-item');
+          const isOpen = item.classList.contains('open');
+          document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+          if (!isOpen) item.classList.add('open');
+        });
+      });
+    })();
+
+    /* === ADD TO CART FEEDBACK === */
+    (function () {
+      const btn = document.getElementById('fd-add-to-cart');
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        btn.textContent = '✓ Added to Cart';
+        btn.style.background = 'linear-gradient(135deg,#4CAF50,#45a049)';
+        btn.disabled = true;
+        setTimeout(() => {
+          btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Add to Cart';
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 3000);
+      });
+    })();
+  </script>
+
+</body>
+</html>
