@@ -607,12 +607,6 @@ button {
 }
 
 @media (max-width: 640px) {
-  .hero-slide-content {
-    left: 5%;
-    bottom: 12%;
-    max-width: 90%;
-  }
-
   .hero-slide-cta {
     padding: 11px 22px;
   }
@@ -1714,10 +1708,24 @@ button {
   }
 
   .hero-slide-content {
-    grid-template-columns: 1fr;
-    padding: 0 20px;
-    align-items: flex-end;
-    padding-bottom: 60px;
+    left: 50%;
+    transform: translate(-50%, 18px);
+    text-align: center;
+    width: 90%;
+    max-width: 480px;
+    padding: 0;
+    bottom: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-slide.active .hero-slide-content {
+    transform: translate(-50%, 0);
+  }
+
+  .hero-slide-tagline br {
+    display: none;
   }
 
   .hero-image-wrap {
