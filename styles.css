@@ -168,25 +168,6 @@ button {
   box-shadow: 0 0 20px rgba(201, 162, 77, 0.3);
 }
 
-/* ============================================================
-   ANNOUNCEMENT BAR
-   ============================================================ */
-.announcement-bar {
-  background-color: var(--bg-dark-warm);
-  border-bottom: 1px solid var(--border-gold);
-  padding: 10px 0;
-  text-align: center;
-  position: relative;
-  z-index: 100;
-}
-
-.announcement-bar p {
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  color: var(--gold-primary);
-}
 
 /* ============================================================
    HEADER / NAVIGATION
