@@ -801,57 +801,108 @@ button {
 }
 
 /* ============================================================
-   PROMOTIONAL STRIP BANNER
+   SCENT NOTES / INGREDIENT SHOWCASE
    ============================================================ */
-.section-promo-banner {
-  width: 100%;
-  overflow: hidden;
-  background: var(--bg-primary);
-}
-
-.promo-banner-wrap {
+.section-scent-notes {
+  padding: 100px 0;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-gold);
+  border-bottom: 1px solid var(--border-gold);
   position: relative;
-  width: 100%;
-  height: 480px;
+  overflow: hidden;
 }
 
-.promo-banner-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.promo-banner-overlay {
+.section-scent-notes::before {
+  content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(5,5,5,0.85) 0%, rgba(5,5,5,0.4) 60%, rgba(5,5,5,0.1) 100%);
-  z-index: 1;
-}
-
-.promo-banner-content {
-  position: absolute;
-  left: 10%;
   top: 50%;
-  transform: translateY(-50%);
-  max-width: 480px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(201,162,77,0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.scent-notes-inner {
+  position: relative;
   z-index: 2;
 }
 
-.promo-banner-title {
-  font-family: var(--font-serif);
-  font-size: clamp(32px, 3vw, 46px);
-  color: var(--text-primary);
-  line-height: 1.2;
-  margin: 10px 0 16px;
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 60px;
 }
 
-.promo-banner-desc {
+.note-card {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  padding: 48px 36px;
+  text-align: center;
+  transition: var(--transition-base);
+  position: relative;
+}
+
+.note-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  transition: var(--transition-base);
+}
+
+.note-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--gold-primary);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 20px rgba(201,162,77,0.05);
+}
+
+.note-card:hover::before {
+  border-color: rgba(201,162,77,0.2);
+  transform: scale(1.03);
+}
+
+.note-icon {
+  font-size: 32px;
+  margin-bottom: 24px;
+  display: inline-block;
+  opacity: 0.85;
+  transition: var(--transition-base);
+}
+
+.note-card:hover .note-icon {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+.note-card h3 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  letter-spacing: 0.03em;
+}
+
+.note-card p {
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 300;
   color: var(--text-secondary);
-  line-height: 1.8;
+  line-height: 1.75;
+}
+
+@media (max-width: 960px) {
+  .notes-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 40px;
+  }
+  .note-card {
+    padding: 36px 28px;
+  }
 }
 
 /* ============================================================
