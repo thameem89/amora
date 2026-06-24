@@ -51,13 +51,13 @@
               <circle cx="12" cy="7" r="4"/>
             </svg>
           </button>
-          <button class="header-action-btn" id="cart-btn" aria-label="Shopping cart — 2 items">
+          <button class="header-action-btn" id="cart-btn" aria-label="Shopping cart">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
               <line x1="3" y1="6" x2="21" y2="6"/>
               <path d="M16 10a4 4 0 0 1-8 0"/>
             </svg>
-            <span class="cart-count" aria-hidden="true">2</span>
+            <span class="cart-count" aria-hidden="true">0</span>
           </button>
           <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
             <span></span>
@@ -328,7 +328,7 @@
 
           <article class="product-card fade-up">
             <div class="product-card-image">
-              <img src="assets/products/fleur-damour.webp" alt="Fleur d'Or luxury perfume" loading="lazy" width="280" height="280" />
+              <img src="assets/products/fleur-dor-01_amora_noir_fleur_dor_hero.webp" alt="Fleur d'Or luxury perfume" loading="lazy" width="280" height="280" />
             </div>
             <div class="product-card-info">
               <h3 class="product-card-name">Fleur d'Or</h3>
@@ -343,7 +343,7 @@
 
           <article class="product-card fade-up">
             <div class="product-card-image">
-              <img src="assets/products/royal-oud-noir.webp" alt="Royal Oud Noir luxury perfume" loading="lazy" width="280" height="280" />
+              <img src="assets/products/royal-oud-01_product_hero_front.webp" alt="Royal Oud Noir luxury perfume" loading="lazy" width="280" height="280" />
             </div>
             <div class="product-card-info">
               <h3 class="product-card-name">Royal Oud Noir</h3>
@@ -358,7 +358,7 @@
 
           <article class="product-card fade-up">
             <div class="product-card-image">
-              <img src="assets/products/golden-elixir.png" alt="Golden Elixir luxury perfume" loading="lazy" width="280" height="280" />
+              <img src="assets/products/golden-elixir-01_product_hero_front.webp" alt="Golden Elixir luxury perfume" loading="lazy" width="280" height="280" />
             </div>
             <div class="product-card-info">
               <h3 class="product-card-name">Golden Elixir</h3>
@@ -769,7 +769,7 @@
           price: 299,
           stock: 45,
           description: "A timeless floral bouquet — roses in full bloom, carried on whispers of soft musk and warm sandalwood.",
-          image: "assets/products/fleur-damour.webp",
+          image: "assets/products/fleur-dor-01_amora_noir_fleur_dor_hero.webp",
           status: "Active",
           sales: 120,
           dateAdded: "2026-01-15"
@@ -782,7 +782,7 @@
           price: 399,
           stock: 12,
           description: "Indulge in the art of fine fragrance with Amora Noir. Where Arabian heritage meets modern elegance.",
-          image: "assets/products/royal-oud-noir.webp",
+          image: "assets/products/royal-oud-01_product_hero_front.webp",
           status: "Active",
           sales: 85,
           dateAdded: "2026-02-20"
@@ -795,17 +795,15 @@
           price: 499,
           stock: 24,
           description: "Liquid gold in a bottle. A warm, opulent accord of amber, oud, and precious spices — unforgettable.",
-          image: "assets/products/golden-elixir.png",
+          image: "assets/products/golden-elixir-01_product_hero_front.webp",
           status: "Active",
           sales: 98,
           dateAdded: "2026-03-05"
         }
       ];
 
-      // Initialize products
-      if (!localStorage.getItem('amora_products')) {
-        localStorage.setItem('amora_products', JSON.stringify(defaultProducts));
-      }
+      // Initialize products (always reset to sync latest hero images)
+      localStorage.setItem('amora_products', JSON.stringify(defaultProducts));
 
       // Initialize default orders if not exists (for dashboard charts)
       const defaultOrders = [
@@ -834,7 +832,7 @@
               </div>
               <div class="collection-card-info">
                 <h3 class="collection-card-name">${p.name}</h3>
-                <a href="#" class="collection-card-link" id="col-${p.id}-link">
+                <a href="${p.id}.html" class="collection-card-link" id="col-${p.id}-link">
                   Shop Now
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="m9 18 6-6-6-6"/>
@@ -853,7 +851,7 @@
               </div>
               <div class="product-card-info">
                 <h3 class="product-card-name">${p.name}</h3>
-                <a href="#" class="product-card-link" id="bs-${p.id}-link">
+                <a href="${p.id}.html" class="product-card-link" id="bs-${p.id}-link">
                   Shop Now
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="m9 18 6-6-6-6"/>
@@ -871,6 +869,7 @@
       }
     })();
   </script>
+  <script src="cart.js"></script>
 
 </body>
 </html>
