@@ -520,7 +520,8 @@ button {
 
 .hero-slide-content {
   position: absolute;
-  left: 7%;
+  right: 7%;
+  left: auto;
   bottom: 14%;
   z-index: 3;
   max-width: 520px;
@@ -1709,6 +1710,7 @@ button {
 
   .hero-slide-content {
     left: 50%;
+    right: auto;
     transform: translate(-50%, 18px);
     text-align: center;
     width: 90%;
