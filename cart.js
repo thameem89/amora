@@ -15,9 +15,9 @@
   // Mapping from cart product IDs to Stripe Price IDs.
   // Replace these placeholders with your actual Stripe Price IDs (starting with price_...)
   const stripePriceMap = {
-    'golden-elixir': 'price_1xxxxxxxxxxxxxxxxxxxxx',
-    'fleur-dor': 'price_1xxxxxxxxxxxxxxxxxxxxx',
-    'royal-oud-noir': 'price_1xxxxxxxxxxxxxxxxxxxxx'
+    'golden-elixir': 'price_1TqEg95DUrurkN7aUoYcpqxt',
+    'fleur-dor': 'price_1TqEgC5DUrurkN7aFrTzQdBR',
+    'royal-oud-noir': 'price_1TqEgG5DUrurkN7autWYAZkZ'
   };
 
   function loadCart() {
