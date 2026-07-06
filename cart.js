@@ -9,6 +9,17 @@
   /* ─── STORAGE ─────────────────────────────────────────────── */
   const CART_KEY = 'amora_cart';
 
+  /* ─── STRIPE CONFIG ───────────────────────────────────────── */
+  const stripePublishableKey = 'pk_live_51TmD6F5DUrurkN7aDACN3upMxvfOozfTynhaX6zx6ojcdx1f7ipErbclwVHDxMvwieWjWYY4Pt7tsvK8XzXsWmw10084BaiB0N';
+
+  // Mapping from cart product IDs to Stripe Price IDs.
+  // Replace these placeholders with your actual Stripe Price IDs (starting with price_...)
+  const stripePriceMap = {
+    'golden-elixir': 'price_1xxxxxxxxxxxxxxxxxxxxx',
+    'fleur-dor': 'price_1xxxxxxxxxxxxxxxxxxxxx',
+    'royal-oud-noir': 'price_1xxxxxxxxxxxxxxxxxxxxx'
+  };
+
   function loadCart() {
     try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
     catch { return []; }
@@ -97,6 +108,9 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
     });
+
+    /* checkout events */
+    document.getElementById('cart-checkout-btn')?.addEventListener('click', handleCheckout);
   }
 
   /* ─── DRAWER RENDER ───────────────────────────────────────── */
@@ -182,6 +196,137 @@
     }
   }
 
+  /* ─── STRIPE CHECKOUT FLOW ────────────────────────────────── */
+  function loadStripeScript(callback) {
+    if (window.Stripe) {
+      callback();
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'https://js.stripe.com/v3/';
+    script.onload = callback;
+    document.head.appendChild(script);
+  }
+
+  function handleCheckout(e) {
+    e.preventDefault();
+    const cart = loadCart();
+    if (cart.length === 0) return;
+
+    // Check if Stripe Price IDs have been configured
+    const hasPlaceholders = cart.some(item => !stripePriceMap[item.id] || stripePriceMap[item.id].startsWith('price_1xxxx'));
+    if (hasPlaceholders) {
+      alert('Stripe integration configured. Please replace the placeholder Stripe Price IDs in cart.js with your actual Stripe Price IDs.');
+      return;
+    }
+
+    const checkoutBtn = document.getElementById('cart-checkout-btn');
+    const originalText = checkoutBtn.textContent;
+    checkoutBtn.textContent = 'Redirecting to secure checkout...';
+    checkoutBtn.style.pointerEvents = 'none';
+    checkoutBtn.style.opacity = '0.7';
+
+    loadStripeScript(() => {
+      try {
+        const stripe = Stripe(stripePublishableKey);
+        const lineItems = cart.map(item => ({
+          price: stripePriceMap[item.id],
+          quantity: item.qty
+        }));
+
+        stripe.redirectToCheckout({
+          lineItems: lineItems,
+          mode: 'payment',
+          successUrl: window.location.origin + window.location.pathname + '?checkout=success',
+          cancelUrl: window.location.origin + window.location.pathname + '?checkout=cancel'
+        }).then(result => {
+          if (result.error) {
+            alert(result.error.message);
+            checkoutBtn.textContent = originalText;
+            checkoutBtn.style.pointerEvents = '';
+            checkoutBtn.style.opacity = '';
+          }
+        });
+      } catch (err) {
+        console.error('Stripe error:', err);
+        alert('Stripe redirect failed. Check console for details.');
+        checkoutBtn.textContent = originalText;
+        checkoutBtn.style.pointerEvents = '';
+        checkoutBtn.style.opacity = '';
+      }
+    });
+  }
+
+  function handleUrlParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('checkout')) {
+      const status = urlParams.get('checkout');
+      if (status === 'success') {
+        localStorage.removeItem(CART_KEY);
+        updateBadge();
+        showCheckoutFeedback(true);
+      } else if (status === 'cancel') {
+        showCheckoutFeedback(false);
+      }
+
+      // Clean parameters from URL
+      const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+      window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
+    }
+  }
+
+  function showCheckoutFeedback(isSuccess) {
+    const feedback = document.createElement('div');
+    feedback.id = 'checkout-feedback-modal';
+    feedback.style.cssText = `
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 99999;
+      background: ${isSuccess ? 'rgba(15, 15, 15, 0.96)' : 'rgba(35, 15, 15, 0.96)'};
+      border: 1px solid ${isSuccess ? 'var(--gold-primary, #C9A24D)' : '#ff4d4d'};
+      border-radius: 4px;
+      padding: 20px;
+      max-width: 380px;
+      color: #fff;
+      font-family: var(--font-sans, sans-serif);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      transform: translateY(-20px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    `;
+    feedback.innerHTML = isSuccess ? `
+      <div style="display:flex; align-items:flex-start; gap:14px;">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="#C9A24D" stroke-width="2" fill="none" style="margin-top:2px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div>
+          <h4 style="margin:0 0 6px 0; color:var(--gold-primary, #C9A24D); font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.15em;">Order Confirmed</h4>
+          <p style="margin:0; font-size:12px; color:rgba(255,255,255,0.7); line-height:1.6;">Thank you for your purchase. We are preparing your luxury packaging.</p>
+        </div>
+      </div>
+    ` : `
+      <div style="display:flex; align-items:flex-start; gap:14px;">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="#ff4d4d" stroke-width="2" fill="none" style="margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        <div>
+          <h4 style="margin:0 0 6px 0; color:#ff4d4d; font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.15em;">Checkout Cancelled</h4>
+          <p style="margin:0; font-size:12px; color:rgba(255,255,255,0.7); line-height:1.6;">The checkout process was cancelled. Your selected items are saved in your cart.</p>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(feedback);
+
+    setTimeout(() => {
+      feedback.style.transform = 'translateY(0)';
+      feedback.style.opacity = '1';
+    }, 50);
+
+    setTimeout(() => {
+      feedback.style.transform = 'translateY(-20px)';
+      feedback.style.opacity = '0';
+      setTimeout(() => feedback.remove(), 400);
+    }, 6000);
+  }
+
   /* ─── PUBLIC API ──────────────────────────────────────────── */
   window.AmoraCart = {
     add(product) {
@@ -197,6 +342,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     injectDrawer();
     updateBadge();
+    handleUrlParams();
 
     /* wire cart-btn on every page */
     document.getElementById('cart-btn')?.addEventListener('click', openDrawer);
