@@ -2,3 +2,10 @@
 Thumbs.db
 amora_mobile_textspace_webp/
 amora_mobile_textspace_webp.zip
+
+# Environment files
+local.env
+.env
+.env.local
+.env.*
+
