@@ -1,0 +1,12 @@
+{
+  "name": "amora",
+  "version": "1.0.0",
+  "description": "Amora Noir Luxury Perfumes",
+  "main": "index.js",
+  "scripts": {
+    "start": "stripe-setup"
+  },
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}

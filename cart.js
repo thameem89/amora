@@ -9,16 +9,7 @@
   /* ─── STORAGE ─────────────────────────────────────────────── */
   const CART_KEY = 'amora_cart';
 
-  /* ─── STRIPE CONFIG ───────────────────────────────────────── */
-  const stripePublishableKey = 'pk_live_51TmD6F5DUrurkN7aDACN3upMxvfOozfTynhaX6zx6ojcdx1f7ipErbclwVHDxMvwieWjWYY4Pt7tsvK8XzXsWmw10084BaiB0N';
 
-  // Mapping from cart product IDs to Stripe Price IDs.
-  // Replace these placeholders with your actual Stripe Price IDs (starting with price_...)
-  const stripePriceMap = {
-    'golden-elixir': 'price_1TqEg95DUrurkN7aUoYcpqxt',
-    'fleur-dor': 'price_1TqEgC5DUrurkN7aFrTzQdBR',
-    'royal-oud-noir': 'price_1TqEgG5DUrurkN7autWYAZkZ'
-  };
 
   function loadCart() {
     try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
@@ -196,29 +187,10 @@
     }
   }
 
-  /* ─── STRIPE CHECKOUT FLOW ────────────────────────────────── */
-  function loadStripeScript(callback) {
-    if (window.Stripe) {
-      callback();
-      return;
-    }
-    const script = document.createElement('script');
-    script.src = 'https://js.stripe.com/v3/';
-    script.onload = callback;
-    document.head.appendChild(script);
-  }
-
   function handleCheckout(e) {
     e.preventDefault();
     const cart = loadCart();
     if (cart.length === 0) return;
-
-    // Check if Stripe Price IDs have been configured
-    const hasPlaceholders = cart.some(item => !stripePriceMap[item.id] || stripePriceMap[item.id].startsWith('price_1xxxx'));
-    if (hasPlaceholders) {
-      alert('Stripe integration configured. Please replace the placeholder Stripe Price IDs in cart.js with your actual Stripe Price IDs.');
-      return;
-    }
 
     const checkoutBtn = document.getElementById('cart-checkout-btn');
     const originalText = checkoutBtn.textContent;
@@ -226,34 +198,32 @@
     checkoutBtn.style.pointerEvents = 'none';
     checkoutBtn.style.opacity = '0.7';
 
-    loadStripeScript(() => {
-      try {
-        const stripe = Stripe(stripePublishableKey);
-        const lineItems = cart.map(item => ({
-          price: stripePriceMap[item.id],
-          quantity: item.qty
-        }));
-
-        stripe.redirectToCheckout({
-          lineItems: lineItems,
-          mode: 'payment',
-          successUrl: window.location.origin + window.location.pathname + '?checkout=success',
-          cancelUrl: window.location.origin + window.location.pathname + '?checkout=cancel'
-        }).then(result => {
-          if (result.error) {
-            alert(result.error.message);
-            checkoutBtn.textContent = originalText;
-            checkoutBtn.style.pointerEvents = '';
-            checkoutBtn.style.opacity = '';
-          }
-        });
-      } catch (err) {
-        console.error('Stripe error:', err);
-        alert('Stripe redirect failed. Check console for details.');
-        checkoutBtn.textContent = originalText;
-        checkoutBtn.style.pointerEvents = '';
-        checkoutBtn.style.opacity = '';
+    fetch('/api/checkout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ items: cart })
+    })
+    .then(res => {
+      if (!res.ok) {
+        return res.json().then(err => { throw new Error(err.error || 'Server error'); });
       }
+      return res.json();
+    })
+    .then(session => {
+      if (session.url) {
+        window.location.href = session.url;
+      } else {
+        throw new Error('No checkout URL returned from server.');
+      }
+    })
+    .catch(err => {
+      console.error('Checkout error:', err);
+      alert('Checkout failed: ' + err.message);
+      checkoutBtn.textContent = originalText;
+      checkoutBtn.style.pointerEvents = '';
+      checkoutBtn.style.opacity = '';
     });
   }
 
