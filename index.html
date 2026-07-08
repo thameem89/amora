@@ -802,8 +802,10 @@
         }
       ];
 
-      // Initialize products (always reset to sync latest hero images)
-      localStorage.setItem('amora_products', JSON.stringify(defaultProducts));
+      // Initialize products if not already set
+      if (!localStorage.getItem('amora_products')) {
+        localStorage.setItem('amora_products', JSON.stringify(defaultProducts));
+      }
 
       // Initialize default orders if not exists (for dashboard charts)
       const defaultOrders = [
@@ -817,8 +819,12 @@
         localStorage.setItem('amora_orders', JSON.stringify(defaultOrders));
       }
 
-      function renderProducts() {
-        const products = JSON.parse(localStorage.getItem('amora_products')) || [];
+      async function renderProducts() {
+        if (window.db && window.db.seedProductsIfNeeded) {
+          await window.db.seedProductsIfNeeded();
+        }
+
+        const products = window.db ? await window.db.getProducts() : (JSON.parse(localStorage.getItem('amora_products')) || []);
         const activeProducts = products.filter(p => p.status === 'Active');
 
         const colGrid = document.getElementById('collection-grid');
@@ -832,7 +838,7 @@
               </div>
               <div class="collection-card-info">
                 <h3 class="collection-card-name">${p.name}</h3>
-                <a href="${p.id}.html" class="collection-card-link" id="col-${p.id}-link">
+                <a href="${p.id === 'fleur-dor' || p.id === 'royal-oud-noir' || p.id === 'golden-elixir' ? p.id + '.html' : 'product.html?id=' + p.id}" class="collection-card-link" id="col-${p.id}-link">
                   Shop Now
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="m9 18 6-6-6-6"/>
@@ -851,7 +857,7 @@
               </div>
               <div class="product-card-info">
                 <h3 class="product-card-name">${p.name}</h3>
-                <a href="${p.id}.html" class="product-card-link" id="bs-${p.id}-link">
+                <a href="${p.id === 'fleur-dor' || p.id === 'royal-oud-noir' || p.id === 'golden-elixir' ? p.id + '.html' : 'product.html?id=' + p.id}" class="product-card-link" id="bs-${p.id}-link">
                   Shop Now
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="m9 18 6-6-6-6"/>
@@ -869,6 +875,8 @@
       }
     })();
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
   <script src="cart.js"></script>
 
 </body>

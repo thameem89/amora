@@ -356,19 +356,60 @@
       });
     })();
 
-    (function () {
+    /* === LOAD DYNAMIC DETAILS & ADD TO CART === */
+    document.addEventListener('DOMContentLoaded', async () => {
+      const product = window.db ? await window.db.getProduct('royal-oud-noir') : null;
+      if (!product) return;
+
+      // Update name
+      const nameEls = document.querySelectorAll('.product-detail-title, .product-breadcrumb-current, #product-modal-name');
+      nameEls.forEach(el => el.textContent = product.name);
+
+      // Update price
+      const priceEl = document.querySelector('.product-price');
+      if (priceEl) priceEl.textContent = `AED ${product.price}`;
+
+      // Update description
+      const descEl = document.querySelector('.product-description');
+      if (descEl) descEl.textContent = product.description;
+
+      // Update notes if they exist in product
+      if (product.topNotes || product.heartNotes || product.baseNotes) {
+        const notesGrid = document.querySelector('.product-notes-grid');
+        if (notesGrid) {
+          notesGrid.innerHTML = `
+            <div class="product-note-group">
+              <span class="product-note-label">Top</span>
+              <div class="product-note-items">${(product.topNotes || '').replace(/\n/g, '<br>')}</div>
+            </div>
+            <div class="product-note-group">
+              <span class="product-note-label">Heart</span>
+              <div class="product-note-items">${(product.heartNotes || '').replace(/\n/g, '<br>')}</div>
+            </div>
+            <div class="product-note-group">
+              <span class="product-note-label">Base</span>
+              <div class="product-note-items">${(product.baseNotes || '').replace(/\n/g, '<br>')}</div>
+            </div>
+          `;
+        }
+      }
+
+      // Bind ADD TO CART button
       const btn = document.getElementById('ro-add-to-cart');
-      if (!btn) return;
-      btn.addEventListener('click', () => {
-        window.AmoraCart.add({
-          id: 'royal-oud-noir',
-          name: 'Royal Oud Noir',
-          price: 520,
-          img: 'assets/products/royal-oud-01_product_hero_front.webp'
+      if (btn) {
+        btn.addEventListener('click', () => {
+          window.AmoraCart.add({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            img: product.image
+          });
         });
-      });
-    })();
+      }
+    });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
   <script src="cart.js"></script>
 
 </body>

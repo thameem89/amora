@@ -13,8 +13,150 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="admin.css" />
+  <style>
+    /* Admin Login Screen Overlay */
+    #admin-login-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(5, 5, 5, 0.98);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      backdrop-filter: blur(15px);
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    #admin-login-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .login-card {
+      width: 100%;
+      max-width: 400px;
+      background: rgba(13, 13, 13, 0.6);
+      border: 1px solid var(--border-gold);
+      border-radius: 8px;
+      padding: 40px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(201, 162, 77, 0.08);
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .login-logo {
+      height: 60px;
+      width: auto;
+      margin: 0 auto 20px;
+    }
+    .login-title {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .login-subtitle {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+    }
+    .login-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .login-label {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gold-pale);
+      margin-bottom: 8px;
+    }
+    .login-input {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(201, 162, 77, 0.2);
+      border-radius: 4px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      transition: var(--transition-base);
+      box-sizing: border-box;
+    }
+    .login-input:focus {
+      outline: none;
+      border-color: var(--gold-primary);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--gold-dim), var(--gold-primary));
+      border: none;
+      border-radius: 4px;
+      color: #0d0d0d;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition-base);
+      margin-top: 10px;
+    }
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(201, 162, 77, 0.3);
+    }
+    .login-error {
+      color: #E57373;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      margin-top: 15px;
+      display: none;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- ============================================================
+       ADMIN LOGIN OVERLAY
+       ============================================================ -->
+  <div id="admin-login-overlay">
+    <div class="login-card">
+      <svg class="login-logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 95C74.8528 95 95 74.8528 95 50C95 40.2312 91.8797 31.1915 86.5828 23.8344C84.4552 28.5303 83.25 33.7298 83.25 39.2C83.25 61.2914 65.3414 79.2 43.25 79.2C31.5794 79.2 21.0963 74.1952 13.8213 66.1687C21.7249 82.9099 38.4891 95 50 95Z" fill="url(#goldLogoGradLogin)"/>
+        <defs>
+          <linearGradient id="goldLogoGradLogin" x1="13.8" y1="23.8" x2="95" y2="95" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#C9A24D"/>
+            <stop offset="50%" stop-color="#E8CFA0"/>
+            <stop offset="100%" stop-color="#9B7A36"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <h2 class="login-title">Amora Admin</h2>
+      <p class="login-subtitle">Please sign in to access the dashboard</p>
+      
+      <form id="login-form">
+        <div class="login-group">
+          <label for="username" class="login-label">Username</label>
+          <input type="text" id="username" class="login-input" required placeholder="Enter username" />
+        </div>
+        <div class="login-group">
+          <label for="password" class="login-label">Password</label>
+          <input type="password" id="password" class="login-input" required placeholder="Enter password" />
+        </div>
+        <button type="submit" class="login-btn">Sign In</button>
+        <div id="login-error-msg" class="login-error"></div>
+      </form>
+    </div>
+  </div>
 
   <div class="admin-container">
 
@@ -85,6 +227,7 @@
             <span class="admin-avatar">AD</span>
             <span class="admin-name">Administrator</span>
           </div>
+          <button class="btn-gold-outline" id="btn-logout" style="padding: 8px 16px; font-size: 12px; margin-left: 15px; border-radius: 4px;">Sign Out</button>
         </div>
       </header>
 
@@ -262,6 +405,31 @@
               <!-- Rendered in JS -->
             </tbody>
           </table>
+        </div>
+
+        <!-- Low Stock Alerts Panel -->
+        <div id="low-stock-panel" style="margin-top: 40px; display: none;">
+          <div class="panel-section-header">
+            <h2 class="panel-section-title" style="color: #E57373; display: flex; align-items: center; gap: 8px;">
+              <span>⚠️</span> Low Stock Alerts
+            </h2>
+          </div>
+          <div class="table-container" style="border-color: rgba(229, 115, 115, 0.3);">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>SKU</th>
+                  <th>Category</th>
+                  <th>Stock Remaining</th>
+                  <th>Fulfillment Status</th>
+                </tr>
+              </thead>
+              <tbody id="low-stock-table-body">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
         </div>
 
       </section>
@@ -495,6 +663,21 @@
             <input type="number" id="prod-stock" class="form-input" min="0" placeholder="e.g. 50" required />
           </div>
 
+          <div class="form-group">
+            <label for="prod-top-notes">Top Notes</label>
+            <input type="text" id="prod-top-notes" class="form-input" placeholder="e.g. Saffron, Cardamom" />
+          </div>
+
+          <div class="form-group">
+            <label for="prod-heart-notes">Heart Notes</label>
+            <input type="text" id="prod-heart-notes" class="form-input" placeholder="e.g. Rose, Leather" />
+          </div>
+
+          <div class="form-group">
+            <label for="prod-base-notes">Base Notes</label>
+            <input type="text" id="prod-base-notes" class="form-input" placeholder="e.g. Amber, Oud, Musk" />
+          </div>
+
           <div class="form-group full-width">
             <label for="prod-desc">Description</label>
             <textarea id="prod-desc" class="form-textarea" placeholder="Premium description of scent profile, notes (top, heart, base)..."></textarea>
@@ -556,6 +739,74 @@
   </dialog>
 
   <!-- ============================================================
+       MODAL: ORDER DETAILS DIALOG
+       ============================================================ -->
+  <dialog id="dialog-order-details" class="admin-dialog" style="max-width: 600px;">
+    <div class="dialog-header">
+      <h3>Order Details: <span id="detail-order-id" style="color:var(--gold-pale);">ORD-XXXX</span></h3>
+      <button class="btn-close-dialog" onclick="closeOrderDetailsDialog()">✕</button>
+    </div>
+    <div class="dialog-body" style="padding: 24px 32px;">
+      <input type="hidden" id="detail-order-id-hidden" />
+      
+      <!-- Order Metadata -->
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom: 24px; font-size:12px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 16px;">
+        <div>
+          <span style="color:var(--text-muted); display:block; margin-bottom:4px; font-weight: 600;">CUSTOMER DETAILS</span>
+          <strong id="detail-cust-name" style="color:#fff; font-size:13px;">John Doe</strong>
+          <span id="detail-cust-email" style="color:var(--text-muted); display:block; margin-top:2px;">john.doe@gmail.com</span>
+        </div>
+        <div>
+          <span style="color:var(--text-muted); display:block; margin-bottom:4px; font-weight: 600;">ORDER METADATA</span>
+          <span>Date Placed: <strong id="detail-order-date">June 20, 2026</strong></span>
+          <div style="margin-top: 6px; display:flex; align-items:center; gap:8px;">
+            <span>Fulfillment:</span>
+            <select id="detail-status-dropdown" class="filter-select" style="padding: 4px 24px 4px 8px; font-size:11px; margin-top:0;" onchange="updateOrderStatusFromDetails(this.value)">
+              <option value="Pending">Pending</option>
+              <option value="Processing">Processing</option>
+              <option value="Shipped">Shipped</option>
+              <option value="Delivered">Delivered</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Items List Title -->
+      <span style="color:var(--text-muted); font-size:11px; font-weight:600; letter-spacing:0.05em; display:block; margin-bottom:12px; text-transform:uppercase;">Items Ordered</span>
+      
+      <!-- Items Container -->
+      <div id="detail-items-list" style="max-height: 180px; overflow-y:auto; margin-bottom: 24px;">
+        <!-- Dynamically rendered -->
+      </div>
+
+      <!-- Order Summary Totals -->
+      <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding:16px 20px; border-radius:4px; font-size:12px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+          <span style="color:var(--text-muted);">Subtotal</span>
+          <span id="detail-subtotal">AED 0</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+          <span style="color:var(--text-muted);">Sales Tax (VAT 5%)</span>
+          <span id="detail-tax">AED 0</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:12px; border-bottom:1px dashed rgba(255,255,255,0.1); padding-bottom:8px;">
+          <span style="color:var(--text-muted);">Shipping Charge</span>
+          <span id="detail-shipping">AED 0</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:14px; font-weight:600;">
+          <span style="color:var(--gold-pale);">Grand Total</span>
+          <strong id="detail-total" style="color:var(--gold-primary);">AED 0</strong>
+        </div>
+      </div>
+
+    </div>
+    <div class="dialog-footer">
+      <button class="btn-dialog-cancel" onclick="closeOrderDetailsDialog()">Close details</button>
+    </div>
+  </dialog>
+
+  <!-- ============================================================
        ADMIN CORE LOGIC SCRIPT
        ============================================================ -->
   <script>
@@ -570,7 +821,7 @@
     const dialogDelete = document.getElementById('dialog-delete');
 
     // Tab Switching Function
-    function switchTab(tabId) {
+    async function switchTab(tabId) {
       activeTab = tabId;
 
       // Update Nav Buttons
@@ -604,6 +855,9 @@
         titleDisplay.textContent = titles[tabId];
       }
 
+      // Sync data from Supabase before rendering the tab panels
+      await syncFromDb();
+
       // Initialize tab data if switching
       if (tabId === 'dashboard') {
         loadDashboardData();
@@ -620,9 +874,9 @@
 
     // Attach Click Events to Nav
     document.querySelectorAll('.admin-nav-item').forEach(item => {
-      item.addEventListener('click', () => {
+      item.addEventListener('click', async () => {
         const tab = item.getAttribute('data-tab');
-        switchTab(tab);
+        await switchTab(tab);
       });
     });
 
@@ -638,21 +892,51 @@
       }, 5000);
     }
 
-    // LocalStorage helper utilities
-    function getProducts() {
-      return JSON.parse(localStorage.getItem('amora_products')) || [];
+    // Supabase Caching and Syncing utilities
+    let cachedProducts = [];
+    let cachedOrders = [];
+
+    async function syncFromDb() {
+      if (window.db) {
+        if (window.db.seedProductsIfNeeded) {
+          await window.db.seedProductsIfNeeded();
+        }
+        cachedProducts = await window.db.getProducts();
+        cachedOrders = await window.db.getOrders();
+      } else {
+        // Fallback to LocalStorage
+        cachedProducts = JSON.parse(localStorage.getItem('amora_products')) || [];
+        cachedOrders = JSON.parse(localStorage.getItem('amora_orders')) || [];
+      }
     }
 
-    function saveProducts(products) {
-      localStorage.setItem('amora_products', JSON.stringify(products));
+    function getProducts() {
+      return cachedProducts;
+    }
+
+    async function saveProductToDb(product) {
+      if (window.db && window.db.upsertProduct) {
+        await window.db.upsertProduct(product);
+      }
+      await syncFromDb();
+    }
+
+    async function deleteProductFromDb(id) {
+      if (window.db && window.db.deleteProduct) {
+        await window.db.deleteProduct(id);
+      }
+      await syncFromDb();
     }
 
     function getOrders() {
-      return JSON.parse(localStorage.getItem('amora_orders')) || [];
+      return cachedOrders;
     }
 
-    function saveOrders(orders) {
-      localStorage.setItem('amora_orders', JSON.stringify(orders));
+    async function updateOrderStatusInDb(orderId, status) {
+      if (window.db && window.db.updateOrderStatus) {
+        await window.db.updateOrderStatus(orderId, status);
+      }
+      await syncFromDb();
     }
 
     // ============================================================
@@ -685,6 +969,37 @@
       // Render Dynamic SVG Donut Chart
       renderCategoryDonut(products);
 
+      // Check for low stock alerts
+      const lowStockProducts = products.filter(p => p.stock <= 15);
+      const lowStockPanel = document.getElementById('low-stock-panel');
+      const lowStockTable = document.getElementById('low-stock-table-body');
+      
+      if (lowStockPanel && lowStockTable) {
+        if (lowStockProducts.length > 0) {
+          lowStockPanel.style.display = 'block';
+          lowStockTable.innerHTML = lowStockProducts.map(p => {
+            let stockColor = p.stock === 0 ? '#E57373' : '#FFB74D';
+            let stockLabel = p.stock === 0 ? 'Out of Stock' : `${p.stock} units`;
+            return `
+              <tr>
+                <td>
+                  <div class="product-cell">
+                    <img class="product-thumb" src="${p.image}" alt="${p.name}" style="width:30px; height:30px; border-radius: 4px;" />
+                    <span class="product-name-text" style="font-size:13px;">${p.name}</span>
+                  </div>
+                </td>
+                <td><code>${p.sku}</code></td>
+                <td>${p.category}</td>
+                <td><strong style="color: ${stockColor};">${stockLabel}</strong></td>
+                <td><button class="btn-gold-outline" style="padding: 4px 8px; font-size: 10px; border-radius: 4px;" onclick="switchTab('products'); openProductEditDialog('${p.id}');">Restock</button></td>
+              </tr>
+            `;
+          }).join('');
+        } else {
+          lowStockPanel.style.display = 'none';
+        }
+      }
+
       // Render Recent Orders Table
       const recentOrders = [...orders]
         .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -697,7 +1012,7 @@
         } else {
           tableBody.innerHTML = recentOrders.map(o => `
             <tr>
-              <td><strong style="color:var(--gold-pale);">${o.id}</strong></td>
+              <td><strong style="color:var(--gold-pale); cursor:pointer;" onclick="openOrderDetails('${o.id}')" title="Click to view details">${o.id}</strong></td>
               <td>${o.customer}</td>
               <td style="max-width:200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${o.items}</td>
               <td>${formatDateString(o.date)}</td>
@@ -973,6 +1288,9 @@
     document.getElementById('btn-add-product').addEventListener('click', () => {
       document.getElementById('form-product').reset();
       document.getElementById('prod-id').value = '';
+      document.getElementById('prod-top-notes').value = '';
+      document.getElementById('prod-heart-notes').value = '';
+      document.getElementById('prod-base-notes').value = '';
       document.getElementById('dialog-product-title').textContent = 'Add New Product';
       
       // Reset Image grid selection to first
@@ -1002,6 +1320,9 @@
       document.getElementById('prod-status').value = product.status;
       document.getElementById('prod-price').value = product.price;
       document.getElementById('prod-stock').value = product.stock;
+      document.getElementById('prod-top-notes').value = product.topNotes || '';
+      document.getElementById('prod-heart-notes').value = product.heartNotes || '';
+      document.getElementById('prod-base-notes').value = product.baseNotes || '';
       document.getElementById('prod-desc').value = product.description || '';
 
       // Image selection logic
@@ -1028,7 +1349,7 @@
     }
 
     // Form Save Submission
-    function saveProductForm(e) {
+    async function saveProductForm(e) {
       e.preventDefault();
       const id = document.getElementById('prod-id').value;
       const name = document.getElementById('prod-name').value.trim();
@@ -1037,6 +1358,9 @@
       const status = document.getElementById('prod-status').value;
       const price = parseInt(document.getElementById('prod-price').value);
       const stock = parseInt(document.getElementById('prod-stock').value);
+      const topNotes = document.getElementById('prod-top-notes').value.trim();
+      const heartNotes = document.getElementById('prod-heart-notes').value.trim();
+      const baseNotes = document.getElementById('prod-base-notes').value.trim();
       const description = document.getElementById('prod-desc').value.trim();
 
       // Custom path overrides grid selections
@@ -1062,6 +1386,9 @@
           status,
           price,
           stock,
+          topNotes,
+          heartNotes,
+          baseNotes,
           description,
           image: finalImage,
           sales: 0,
@@ -1069,7 +1396,7 @@
         };
 
         products.push(newProduct);
-        saveProducts(products);
+        await saveProductToDb(newProduct);
         showAlert(`Product "${name}" added successfully!`);
       } else {
         // UPDATE EXISTING product
@@ -1087,10 +1414,13 @@
           products[idx].status = status;
           products[idx].price = price;
           products[idx].stock = stock;
+          products[idx].topNotes = topNotes;
+          products[idx].heartNotes = heartNotes;
+          products[idx].baseNotes = baseNotes;
           products[idx].description = description;
           products[idx].image = finalImage;
 
-          saveProducts(products);
+          await saveProductToDb(products[idx]);
           showAlert(`Product "${name}" updated successfully!`);
         }
       }
@@ -1110,14 +1440,13 @@
       dialogDelete.close();
     }
 
-    function confirmDelete() {
+    async function confirmDelete() {
       const id = document.getElementById('delete-prod-id').value;
-      let products = getProducts();
+      const products = getProducts();
       const product = products.find(p => p.id === id);
       const name = product ? product.name : '';
 
-      products = products.filter(p => p.id !== id);
-      saveProducts(products);
+      await deleteProductFromDb(id);
       
       closeDeleteDialog();
       loadProductsData();
@@ -1147,7 +1476,7 @@
 
         tableBody.innerHTML = filteredOrders.map(o => `
           <tr>
-            <td><strong style="color:var(--gold-pale);">${o.id}</strong></td>
+            <td><strong style="color:var(--gold-pale); cursor:pointer;" onclick="openOrderDetails('${o.id}')" title="Click to view details">${o.id}</strong></td>
             <td>
               <div style="display:flex; flex-direction:column;">
                 <span>${o.customer}</span>
@@ -1176,15 +1505,10 @@
     document.getElementById('order-search').addEventListener('input', loadOrdersData);
     document.getElementById('filter-order-status').addEventListener('change', loadOrdersData);
 
-    function updateOrderStatus(orderId, newStatus) {
-      const orders = getOrders();
-      const idx = orders.findIndex(o => o.id === orderId);
-      if (idx !== -1) {
-        orders[idx].status = newStatus;
-        saveOrders(orders);
-        showAlert(`Order ${orderId} status updated to "${newStatus}"`);
-        loadOrdersData();
-      }
+    async function updateOrderStatus(orderId, newStatus) {
+      await updateOrderStatusInDb(orderId, newStatus);
+      showAlert(`Order ${orderId} status updated to "${newStatus}"`);
+      loadOrdersData();
     }
 
     // ============================================================
@@ -1270,6 +1594,76 @@
       showAlert('General settings updated successfully.');
     }
 
+    // ============================================================
+    // ORDER DETAILS DIALOG OPERATIONS
+    // ============================================================
+    const dialogOrderDetails = document.getElementById('dialog-order-details');
+
+    function openOrderDetails(orderId) {
+      const orders = getOrders();
+      const order = orders.find(o => o.id === orderId);
+      if (!order) return;
+
+      document.getElementById('detail-order-id').textContent = order.id;
+      document.getElementById('detail-order-date').textContent = formatDateString(order.date);
+      document.getElementById('detail-cust-name').textContent = order.customer;
+      document.getElementById('detail-cust-email').textContent = order.email;
+      document.getElementById('detail-status-dropdown').value = order.status;
+      document.getElementById('detail-order-id-hidden').value = order.id;
+
+      // Calculate breakdown based on tax and shipping settings
+      const taxRate = parseFloat(localStorage.getItem('amora_tax_rate') || '5.0');
+      const shippingCharge = parseFloat(localStorage.getItem('amora_shipping') || '15');
+      
+      const listContainer = document.getElementById('detail-items-list');
+      if (order.cartDetails && order.cartDetails.length > 0) {
+        listContainer.innerHTML = order.cartDetails.map(item => {
+          const itemSub = item.price * item.qty;
+          return `
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.05); padding: 8px 0;">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <img src="${item.img || 'assets/products/fleur-dor-01_amora_noir_fleur_dor_hero.webp'}" style="width:36px; height:36px; border-radius:4px; object-fit:contain; background:rgba(255,255,255,0.02);" />
+                <div>
+                  <div style="font-size:12px; font-weight:500; color:#fff;">${item.name}</div>
+                  <div style="font-size:10px; color:var(--text-muted);">Qty: ${item.qty} &times; AED ${item.price}</div>
+                </div>
+              </div>
+              <div style="font-size:12px; font-weight:500; color:var(--gold-pale);">AED ${itemSub}</div>
+            </div>
+          `;
+        }).join('');
+      } else {
+        // Fallback for orders created before detailed tracking was added
+        listContainer.innerHTML = `
+          <div style="font-size:12px; color:#fff; padding: 12px 0;">
+            ${order.items}
+          </div>
+        `;
+      }
+
+      const subtotal = order.cartDetails ? order.cartDetails.reduce((sum, item) => sum + (item.price * item.qty), 0) : order.total;
+      const tax = Math.round(subtotal * (taxRate / 100));
+      const finalShipping = subtotal > 300 ? 0 : shippingCharge;
+      
+      document.getElementById('detail-subtotal').textContent = `AED ${subtotal.toLocaleString()}`;
+      document.getElementById('detail-tax').textContent = `AED ${tax.toLocaleString()}`;
+      document.getElementById('detail-shipping').textContent = `AED ${finalShipping.toLocaleString()}`;
+      document.getElementById('detail-total').textContent = `AED ${order.total.toLocaleString()}`;
+
+      dialogOrderDetails.showModal();
+    }
+
+    function closeOrderDetailsDialog() {
+      dialogOrderDetails.close();
+    }
+
+    function updateOrderStatusFromDetails(newStatus) {
+      const orderId = document.getElementById('detail-order-id-hidden').value;
+      if (orderId) {
+        updateOrderStatus(orderId, newStatus);
+      }
+    }
+
     // Close Dialogs when clicking outside
     dialogProduct.addEventListener('click', (e) => {
       const rect = dialogProduct.getBoundingClientRect();
@@ -1289,11 +1683,70 @@
       }
     });
 
+    dialogOrderDetails.addEventListener('click', (e) => {
+      const rect = dialogOrderDetails.getBoundingClientRect();
+      const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
+      if (!isInDialog) {
+        dialogOrderDetails.close();
+      }
+    });
+
+    // ============================================================
+    // AUTHENTICATION LOGIC (admin / admin123)
+    // ============================================================
+    const loginOverlay = document.getElementById('admin-login-overlay');
+    const loginForm = document.getElementById('login-form');
+    const loginErrorMsg = document.getElementById('login-error-msg');
+    const logoutBtn = document.getElementById('btn-logout');
+
+    function checkAuth() {
+      if (sessionStorage.getItem('amora_admin_logged_in') === 'true') {
+        loginOverlay.classList.add('hidden');
+      } else {
+        loginOverlay.classList.remove('hidden');
+      }
+    }
+
+    if (loginForm) {
+      loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const usernameVal = document.getElementById('username').value.trim();
+        const passwordVal = document.getElementById('password').value.trim();
+
+        if (usernameVal === 'admin' && passwordVal === 'admin123') {
+          sessionStorage.setItem('amora_admin_logged_in', 'true');
+          loginOverlay.classList.add('hidden');
+          loginErrorMsg.style.display = 'none';
+          await syncFromDb();
+          loadDashboardData();
+        } else {
+          loginErrorMsg.textContent = 'Invalid username or password.';
+          loginErrorMsg.style.display = 'block';
+        }
+      });
+    }
+
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        sessionStorage.removeItem('amora_admin_logged_in');
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+        checkAuth();
+      });
+    }
+
     // INITIAL TRIGGER
-    document.addEventListener('DOMContentLoaded', () => {
-      loadDashboardData();
+    document.addEventListener('DOMContentLoaded', async () => {
+      checkAuth();
+      if (sessionStorage.getItem('amora_admin_logged_in') === 'true') {
+        await syncFromDb();
+        loadDashboardData();
+      }
     });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
 
 </body>
 </html>

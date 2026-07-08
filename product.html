@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Golden Elixir by Amora Noir — Liquid gold in every drop. Cardamom, Labdanum, Vanilla & Aged Amber. 100ml EDP." />
-  <title>Golden Elixir | Amora Noir</title>
+  <meta name="description" content="Premium luxury perfumes by Amora Noir." />
+  <title>Luxury Perfume | Amora Noir</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
 
   <!-- HEADER -->
   <header class="site-header" id="site-header" role="banner">
@@ -62,7 +61,7 @@
   </nav>
 
   <main>
-    <div class="container">
+    <div class="container" id="product-page-container">
 
       <!-- BREADCRUMB -->
       <nav class="product-breadcrumb" aria-label="Breadcrumb">
@@ -70,11 +69,11 @@
         <span class="product-breadcrumb-sep">›</span>
         <a href="shop.html">Shop</a>
         <span class="product-breadcrumb-sep">›</span>
-        <span class="product-breadcrumb-current">Golden Elixir</span>
+        <span class="product-breadcrumb-current" id="crumb-name">Perfume</span>
       </nav>
 
       <!-- PRODUCT DETAIL -->
-      <section class="product-detail-section" aria-label="Golden Elixir product detail">
+      <section class="product-detail-section" id="product-detail-section" aria-label="Product detail">
         <div class="product-detail-grid">
 
           <!-- Gallery Column -->
@@ -83,54 +82,47 @@
               <img
                 id="pd-main-img"
                 class="product-gallery-main-img"
-                src="assets/products/golden-elixir-01_product_hero_front.webp"
-                alt="Golden Elixir — main view"
+                src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'></svg>"
+                alt="Perfume view"
               />
             </div>
             <div class="product-gallery-thumbs" id="pd-thumbs" role="list" aria-label="Product images">
-              <img src="assets/products/golden-elixir-01_product_hero_front.webp"              class="product-gallery-thumb active" alt="Golden Elixir front view"   role="listitem" data-idx="0" />
-              <img src="assets/products/golden-elixir-02_product_alt_angle.webp"               class="product-gallery-thumb"        alt="Golden Elixir alt angle"   role="listitem" data-idx="1" />
-              <img src="assets/products/golden-elixir-03_model_holding_perfume_portrait.webp"  class="product-gallery-thumb"        alt="Golden Elixir lifestyle"   role="listitem" data-idx="2" />
-              <img src="assets/products/golden-elixir-04_product_display_hero.webp"            class="product-gallery-thumb"        alt="Golden Elixir display"     role="listitem" data-idx="3" />
-              <img src="assets/products/golden-elixir-05_model_holding_perfume_closeup.webp"   class="product-gallery-thumb"        alt="Golden Elixir closeup"     role="listitem" data-idx="4" />
+              <!-- Dynamically rendered -->
             </div>
           </div>
 
           <!-- Info Column -->
           <div class="product-info-col">
-            <span class="product-category-badge">Amber &amp; Spices</span>
-            <h1 class="product-detail-title">Golden Elixir</h1>
-            <p class="product-tagline">"Warm golden sweetness blended with deep sensual luxury."</p>
+            <span class="product-category-badge" id="prod-badge">Luxury Blend</span>
+            <h1 class="product-detail-title" id="prod-title">Loading...</h1>
+            <p class="product-tagline" id="prod-sku-tag" style="font-family:var(--font-sans); font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold-pale);"></p>
             <div class="product-divider"></div>
 
-            <p class="product-description">
-              A warm, luxurious fragrance that feels smooth, sensual, and addictive. Golden Elixir opens with a radiant burst
-              of saffron and spiced citrus, lifted by the brightness of bergamot. The heart blossoms into a rich, velvety accord
-              of amber, rose, and tonka bean — deeply intimate and utterly captivating. The base lingers endlessly with vanilla,
-              a light oud accord, musk, and patchouli, leaving a trail of warm golden sweetness that clings to skin like a memory.
+            <p class="product-description" id="prod-desc">
+              Loading description...
             </p>
 
             <!-- Fragrance Notes -->
             <p class="product-notes-title">Fragrance Notes</p>
-            <div class="product-notes-grid">
+            <div class="product-notes-grid" id="prod-notes">
               <div class="product-note-group">
                 <span class="product-note-label">Top</span>
-                <div class="product-note-items">Saffron<br>Bergamot<br>Spiced Citrus</div>
+                <div class="product-note-items">Oud Accords</div>
               </div>
               <div class="product-note-group">
                 <span class="product-note-label">Heart</span>
-                <div class="product-note-items">Amber<br>Rose<br>Tonka Bean</div>
+                <div class="product-note-items">Amber Blend</div>
               </div>
               <div class="product-note-group">
                 <span class="product-note-label">Base</span>
-                <div class="product-note-items">Vanilla<br>Oud Light Accord<br>Musk<br>Patchouli</div>
+                <div class="product-note-items">Musk & Vanilla</div>
               </div>
             </div>
 
             <!-- Price -->
             <div class="product-price-row">
               <div>
-                <div class="product-price">AED 480</div>
+                <div class="product-price" id="prod-price">AED ...</div>
                 <div class="product-price-sub">Incl. VAT · Free UAE Shipping</div>
               </div>
               <span class="product-volume-tag">100 ml EDP</span>
@@ -138,11 +130,11 @@
 
             <!-- Actions -->
             <div class="product-actions">
-              <button class="btn-add-to-cart" id="ge-add-to-cart">
+              <button class="btn-add-to-cart" id="pd-add-to-cart">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                 Add to Cart
               </button>
-              <button class="btn-wishlist" id="ge-wishlist" aria-label="Add to wishlist">
+              <button class="btn-wishlist" id="pd-wishlist" aria-label="Add to wishlist">
                 <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
               </button>
             </div>
@@ -167,19 +159,15 @@
       </section>
 
       <!-- ACCORDION DETAILS -->
-      <section class="product-details-accordion" aria-label="Product details">
+      <section class="product-details-accordion" aria-label="Product details" id="product-accordion" style="margin-top: 60px;">
         <div class="accordion-item open">
           <button class="accordion-trigger" aria-expanded="true" id="acc-story-btn">
             The Story
             <span class="accordion-icon" aria-hidden="true">+</span>
           </button>
-          <div class="accordion-body" id="acc-story-body">
-            <div class="accordion-content">
-              Golden Elixir was born from a desire to bottle warmth itself — the golden hour of a Middle Eastern evening,
-              the sweetness of spice markets, the soft glow of amber candlelight. Our perfumer wove together precious saffron
-              from the East, delicate rose, and a rare light oud accord to create a fragrance that is at once immediately
-              wearable and deeply luxurious. Finished with vanilla, musk, and patchouli, it is addictive from the very
-              first breath. Golden Elixir is warmth you wear.
+          <div class="accordion-body" id="acc-story-body" role="region" aria-labelledby="acc-story-btn">
+            <div class="accordion-content" id="acc-story-content">
+              Created with passion and dedication. This fragrance captures a signature blend of luxury ingredients curated to express individual power and elegance. A unique statement in the world of high perfumery.
             </div>
           </div>
         </div>
@@ -188,25 +176,20 @@
             How To Wear
             <span class="accordion-icon" aria-hidden="true">+</span>
           </button>
-          <div class="accordion-body" id="acc-how-body">
+          <div class="accordion-body" id="acc-how-body" role="region" aria-labelledby="acc-how-btn">
             <div class="accordion-content">
-              Golden Elixir shines brightest when worn close to the skin. Apply to wrists, the inside of elbows,
-              and the base of the throat for a warm, enveloping sillage. Perfect for autumn and winter months,
-              or any evening when you want to feel effortlessly luxurious. The amber and vanilla base make it
-              an exceptional choice for date nights, celebrations, and intimate gatherings.
+              Apply to pulse points — wrists, neck, and behind the ears — for optimal diffusion. For longevity, layer with an unscented moisturiser before application. Store upright, away from direct sunlight and extreme heat, to preserve the integrity of the scent.
             </div>
           </div>
         </div>
         <div class="accordion-item">
-          <button class="accordion-trigger" aria-expanded="false" id="acc-ship-btn">
+          <button class="accordion-trigger" aria-expanded="false" id="acc-shipping-btn">
             Shipping &amp; Returns
             <span class="accordion-icon" aria-hidden="true">+</span>
           </button>
-          <div class="accordion-body" id="acc-ship-body">
+          <div class="accordion-body" id="acc-shipping-body" role="region" aria-labelledby="acc-shipping-btn">
             <div class="accordion-content">
-              Complimentary standard shipping across the UAE on all orders. Express delivery available at checkout.
-              All orders are elegantly gift-wrapped at no extra charge. Returns accepted within 14 days of delivery for
-              unopened, sealed products. Please contact our concierge team for assistance.
+              We offer complimentary courier delivery across the United Arab Emirates. Orders are processed within 24 hours, with standard delivery taking 1-2 business days. Due to the personal nature of luxury perfumes, returns are accepted within 14 days only if the protective cellophane packaging remains completely sealed and undamaged.
             </div>
           </div>
         </div>
@@ -217,76 +200,32 @@
 
   <!-- FOOTER -->
   <footer class="site-footer" role="contentinfo">
-    <div class="footer-main">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-col footer-brand">
-            <a href="index.html" class="footer-brand-logo header-logo" aria-label="Amora Noir — Home">
-              <img src="assets/amora_noir_logo_high_quality.webp" alt="Amora Noir" class="logo-img" />
-            </a>
-            <p class="footer-brand-tagline">Timeless elegance, crafted for you. Discover the art of fine fragrance.</p>
-            <div class="footer-social" aria-label="Follow us on social media">
-              <a href="https://www.instagram.com/amoranoirperfumes?igsh=NWFib2picW1ka2Jl" class="social-link" id="footer-instagram" aria-label="Follow us on Instagram" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg>
-              </a>
-              <a href="https://www.facebook.com/share/1LsHkjwGj8/" class="social-link" id="footer-facebook" aria-label="Follow us on Facebook" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                </svg>
-              </a>
-              <a href="https://www.tiktok.com/@amora.noir.perfum?_r=1&_t=ZS-97VLULYtWS5" class="social-link" id="footer-tiktok" aria-label="Follow us on TikTok" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
-                </svg>
-              </a>
-              <a href="#" class="social-link" id="footer-youtube" aria-label="Follow us on YouTube">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
-                  <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-          <div class="footer-col">
-            <h3 class="footer-col-title">Shop</h3>
-            <ul>
-              <li><a href="shop.html">All Products</a></li>
-              <li><a href="fleur-dor.html">Fleur d'Or</a></li>
-              <li><a href="royal-oud-noir.html">Royal Oud Noir</a></li>
-              <li><a href="golden-elixir.html">Golden Elixir</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h3 class="footer-col-title">Company</h3>
-            <ul>
-              <li><a href="story.html">Our Story</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h3 class="footer-col-title">Customer Care</h3>
-            <ul>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">FAQ</a></li>
-              <li><a href="#">Shipping &amp; Delivery</a></li>
-              <li><a href="#">Returns &amp; Exchanges</a></li>
-            </ul>
-          </div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/amora_noir_logo_high_quality.webp" alt="Amora Noir" class="footer-logo-img" />
+          <p class="footer-tagline">"Elegance in scent, strength in silence."</p>
+        </div>
+        <div class="footer-nav-col">
+          <h4>Explore</h4>
+          <a href="shop.html">Shop Catalog</a>
+          <a href="story.html">Our Story</a>
+          <a href="contact.html">Get in Touch</a>
+        </div>
+        <div class="footer-nav-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Shipping &amp; Returns</a>
+        </div>
+        <div class="footer-contact-col">
+          <h4>Contact</h4>
+          <p>Amora Noir Perfumes Trading LLC<br>Downtown Dubai, UAE</p>
+          <p>info@amoranoir.com<br>+971 4 123 4567</p>
         </div>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <div class="footer-bottom-inner">
-          <p class="footer-copyright">© 2025 Amora Noir. All rights reserved.</p>
-          <nav class="footer-legal" aria-label="Legal pages">
-            <a href="#">Terms &amp; Conditions</a>
-            <a href="#">Privacy Policy</a>
-          </nav>
-        </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Amora Noir. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -294,6 +233,7 @@
   <script>
     'use strict';
 
+    /* === STICKY HEADER === */
     (function () {
       const header = document.getElementById('site-header');
       const observer = new IntersectionObserver(
@@ -306,6 +246,7 @@
       observer.observe(sentinel);
     })();
 
+    /* === MOBILE MENU === */
     (function () {
       const hamburger = document.getElementById('hamburger-btn');
       const mobileMenu = document.getElementById('mobile-menu');
@@ -329,21 +270,7 @@
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
     })();
 
-    (function () {
-      const mainImg = document.getElementById('pd-main-img');
-      const thumbs  = document.querySelectorAll('.product-gallery-thumb');
-      function setActive(idx) {
-        mainImg.classList.add('fading');
-        setTimeout(() => {
-          mainImg.src = thumbs[idx].src;
-          mainImg.alt = thumbs[idx].alt;
-          mainImg.classList.remove('fading');
-        }, 220);
-        thumbs.forEach((t, i) => t.classList.toggle('active', i === idx));
-      }
-      thumbs.forEach((t, i) => t.addEventListener('click', () => setActive(i)));
-    })();
-
+    /* === ACCORDION === */
     (function () {
       document.querySelectorAll('.accordion-trigger').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -355,48 +282,96 @@
       });
     })();
 
-    /* === LOAD DYNAMIC DETAILS & ADD TO CART === */
+    /* === LOAD DYNAMIC DETAIL === */
     document.addEventListener('DOMContentLoaded', async () => {
-      const product = window.db ? await window.db.getProduct('golden-elixir') : null;
-      if (!product) return;
+      const urlParams = new URLSearchParams(window.location.search);
+      const prodId = urlParams.get('id');
+      if (!prodId) {
+        showNotFound();
+        return;
+      }
 
-      // Update name
-      const nameEls = document.querySelectorAll('.product-detail-title, .product-breadcrumb-current, #product-modal-name');
-      nameEls.forEach(el => el.textContent = product.name);
+      const product = window.db ? await window.db.getProduct(prodId) : null;
 
-      // Update price
-      const priceEl = document.querySelector('.product-price');
-      if (priceEl) priceEl.textContent = `AED ${product.price}`;
+      if (!product) {
+        showNotFound();
+        return;
+      }
 
-      // Update description
-      const descEl = document.querySelector('.product-description');
-      if (descEl) descEl.textContent = product.description;
+      // Check active
+      if (product.status !== 'Active') {
+        showDraftWarning();
+      }
 
-      // Update notes if they exist in product
+      // Populate DOM
+      document.title = `${product.name} | Amora Noir`;
+      document.getElementById('crumb-name').textContent = product.name;
+      document.getElementById('prod-title').textContent = product.name;
+      document.getElementById('prod-sku-tag').textContent = `SKU: ${product.sku}`;
+      document.getElementById('prod-badge').textContent = product.category;
+      document.getElementById('prod-desc').textContent = product.description || "A luxury fragrance crafted with premium scent profiles.";
+      document.getElementById('prod-price').textContent = `AED ${product.price}`;
+
+      if (product.description) {
+        document.getElementById('acc-story-content').textContent = product.description;
+      }
+
+      // Notes
       if (product.topNotes || product.heartNotes || product.baseNotes) {
-        const notesGrid = document.querySelector('.product-notes-grid');
+        const notesGrid = document.getElementById('prod-notes');
         if (notesGrid) {
           notesGrid.innerHTML = `
             <div class="product-note-group">
               <span class="product-note-label">Top</span>
-              <div class="product-note-items">${(product.topNotes || '').replace(/\n/g, '<br>')}</div>
+              <div class="product-note-items">${(product.topNotes || 'Spicy Citrus').replace(/\n/g, '<br>')}</div>
             </div>
             <div class="product-note-group">
               <span class="product-note-label">Heart</span>
-              <div class="product-note-items">${(product.heartNotes || '').replace(/\n/g, '<br>')}</div>
+              <div class="product-note-items">${(product.heartNotes || 'Floral Absolue').replace(/\n/g, '<br>')}</div>
             </div>
             <div class="product-note-group">
               <span class="product-note-label">Base</span>
-              <div class="product-note-items">${(product.baseNotes || '').replace(/\n/g, '<br>')}</div>
+              <div class="product-note-items">${(product.baseNotes || 'Amber, Musk').replace(/\n/g, '<br>')}</div>
             </div>
           `;
         }
       }
 
+      // Images & Gallery
+      const mainImg = document.getElementById('pd-main-img');
+      const thumbsContainer = document.getElementById('pd-thumbs');
+      mainImg.src = product.image;
+      mainImg.alt = `${product.name} luxury perfume main view`;
+
+      const gallery = product.gallery || [product.image];
+      if (gallery.length > 1) {
+        thumbsContainer.innerHTML = gallery.map((imgSrc, idx) => `
+          <img src="${imgSrc}" class="product-gallery-thumb ${idx === 0 ? 'active' : ''}" alt="${product.name} view ${idx + 1}" role="listitem" data-idx="${idx}" />
+        `).join('');
+
+        thumbsContainer.querySelectorAll('.product-gallery-thumb').forEach(thumb => {
+          thumb.addEventListener('click', () => {
+            thumbsContainer.querySelectorAll('.product-gallery-thumb').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+            const idx = parseInt(thumb.dataset.idx);
+            mainImg.src = gallery[idx];
+          });
+        });
+      } else {
+        thumbsContainer.innerHTML = '';
+      }
+
       // Bind ADD TO CART button
-      const btn = document.getElementById('ge-add-to-cart');
+      const btn = document.getElementById('pd-add-to-cart');
       if (btn) {
-        btn.addEventListener('click', () => {
+        // Remove existing listeners
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        newBtn.addEventListener('click', () => {
+          if (product.stock === 0) {
+            alert('This product is currently out of stock.');
+            return;
+          }
           window.AmoraCart.add({
             id: product.id,
             name: product.name,
@@ -404,6 +379,42 @@
             img: product.image
           });
         });
+      }
+
+      function showNotFound() {
+        const detailContainer = document.getElementById('product-detail-section');
+        if (detailContainer) {
+          detailContainer.innerHTML = `
+            <div style="text-align: center; padding: 80px 0; max-width: 500px; margin: 0 auto;">
+              <h2 style="font-family: var(--font-serif); font-size: 32px; color: var(--gold-primary); margin-bottom: 16px;">Fragrance Not Found</h2>
+              <p style="color: var(--text-secondary); margin-bottom: 32px;">The request perfume profile does not exist or may have been discontinued.</p>
+              <a href="shop.html" class="btn-gold" style="display: inline-block; padding: 12px 24px; font-weight: 500;">Back to Shop</a>
+            </div>
+          `;
+        }
+      }
+
+      function showDraftWarning() {
+        const warning = document.createElement('div');
+        warning.style.cssText = `
+          background: rgba(255, 152, 0, 0.1);
+          border: 1px solid #FFB74D;
+          border-radius: 4px;
+          padding: 12px 20px;
+          color: #FFB74D;
+          font-size: 12px;
+          font-family: var(--font-sans);
+          margin-bottom: 24px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        `;
+        warning.innerHTML = `
+          <span style="font-size:16px;">⚠️</span>
+          <span><strong>Draft Mode:</strong> This product is currently hidden in the shop catalog. Only administrators can view this page.</span>
+        `;
+        const section = document.getElementById('product-detail-section');
+        section.parentNode.insertBefore(warning, section);
       }
     });
   </script>

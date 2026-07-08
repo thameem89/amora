@@ -492,12 +492,60 @@
       fadeEls.forEach(el => observer.observe(el));
     })();
 
+    /* === DYNAMIC PRODUCT RENDERING === */
+    async function renderShopProducts() {
+      const products = window.db ? await window.db.getProducts() : (JSON.parse(localStorage.getItem('amora_products')) || []);
+      const activeProducts = products.filter(p => p.status === 'Active');
+      const grid = document.getElementById('shop-grid');
+      if (!grid) return;
+
+      grid.innerHTML = activeProducts.map(p => {
+        const categoryLower = p.category.toLowerCase();
+        const gallery = p.gallery || [p.image];
+        const defaultIds = ['fleur-dor', 'royal-oud-noir', 'golden-elixir'];
+        const pageLink = defaultIds.includes(p.id) ? `${p.id}.html` : `product.html?id=${p.id}`;
+
+        return `
+          <article class="product-card fade-up visible" data-category="${categoryLower}"
+            data-gallery='${JSON.stringify(gallery)}'
+            data-name="${p.name}">
+            <div class="product-card-image" role="button" tabindex="0" aria-label="View ${p.name} gallery" onclick="location.href='${pageLink}'">
+              <img src="${p.image}" alt="${p.name} luxury perfume bottle" loading="lazy" width="280" height="280" />
+              <div class="product-card-overlay">
+                <span class="product-view-gallery">View Product ✦</span>
+              </div>
+            </div>
+            <div class="product-card-info">
+              <h3 class="product-card-name">${p.name}</h3>
+              <a href="${pageLink}" class="product-card-link" id="bs-${p.id}-link">
+                Shop Now
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      // Apply initial filter
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialFilter = urlParams.get('filter') || 'all';
+      if (window.applyShopFilter) {
+        window.applyShopFilter(initialFilter);
+      }
+    }
+
+    // Render products dynamically
+    document.addEventListener('DOMContentLoaded', renderShopProducts);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      renderShopProducts();
+    }
+
     /* === LIVE PRODUCT FILTERS === */
     (function () {
       const filterBtns = document.querySelectorAll('.filter-btn');
-      const products = document.querySelectorAll('#shop-grid .product-card');
 
       function applyFilter(filterValue) {
+        const products = document.querySelectorAll('#shop-grid .product-card');
         products.forEach(product => {
           const category = product.getAttribute('data-category');
           if (filterValue === 'all' || category === filterValue) {
@@ -529,12 +577,7 @@
         });
       });
 
-      // Parse filter from URL on load
-      const urlParams = new URLSearchParams(window.location.search);
-      const initialFilter = urlParams.get('filter');
-      if (initialFilter) {
-        applyFilter(initialFilter);
-      }
+      window.applyShopFilter = applyFilter;
     })();
 
     /* === NEWSLETTER FORM === */
@@ -646,8 +689,9 @@
       });
     })();
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
   <script src="cart.js"></script>
-
 
 </body>
 </html>
