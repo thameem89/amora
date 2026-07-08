@@ -1738,6 +1738,10 @@
 
     // INITIAL TRIGGER
     document.addEventListener('DOMContentLoaded', async () => {
+      // Clear legacy localStorage orders if they exist to prevent mock charts data
+      if (localStorage.getItem('amora_orders')) {
+        localStorage.removeItem('amora_orders');
+      }
       checkAuth();
       if (sessionStorage.getItem('amora_admin_logged_in') === 'true') {
         await syncFromDb();

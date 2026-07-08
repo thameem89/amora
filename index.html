@@ -807,17 +807,11 @@
         localStorage.setItem('amora_products', JSON.stringify(defaultProducts));
       }
 
-      // Initialize default orders if not exists (for dashboard charts)
-      const defaultOrders = [
-        { id: "ORD-9821", customer: "Fatima Al Maktoum", email: "fatima@domain.ae", date: "2026-06-20", total: 798, status: "Delivered", items: "Royal Oud Noir (2)" },
-        { id: "ORD-9820", customer: "Zaid Al-Suwaidi", email: "zaid@domain.ae", date: "2026-06-19", total: 299, status: "Shipped", items: "Fleur d'Or (1)" },
-        { id: "ORD-9819", customer: "Sarah Connor", email: "sarah@domain.com", date: "2026-06-18", total: 499, status: "Processing", items: "Golden Elixir (1)" },
-        { id: "ORD-9818", customer: "Hamdan Al-Jaber", email: "hamdan@domain.ae", date: "2026-06-18", total: 1097, status: "Delivered", items: "Golden Elixir (1), Royal Oud Noir (1), Fleur d'Or (1)" },
-        { id: "ORD-9817", customer: "Amna Al-Qassimi", email: "amna@domain.ae", date: "2026-06-16", total: 399, status: "Pending", items: "Royal Oud Noir (1)" }
-      ];
-      if (!localStorage.getItem('amora_orders')) {
-        localStorage.setItem('amora_orders', JSON.stringify(defaultOrders));
+      // Clear legacy localStorage orders if they exist to prevent mock charts data
+      if (localStorage.getItem('amora_orders')) {
+        localStorage.removeItem('amora_orders');
       }
+
 
       async function renderProducts() {
         if (window.db && window.db.seedProductsIfNeeded) {
