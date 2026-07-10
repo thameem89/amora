@@ -703,10 +703,29 @@
                 <img src="assets/products/noir-intense.png" alt="Noir Intense" />
               </div>
             </div>
-            <!-- Custom Image Input -->
-            <div style="margin-top:12px;">
-              <label for="prod-custom-img" style="font-size:10px; color:var(--text-muted);">Or enter Custom Image Path/URL</label>
-              <input type="text" id="prod-custom-img" class="form-input" style="padding: 8px 12px; margin-top: 4px;" placeholder="assets/products/filename.webp or http://url..." />
+            
+            <!-- Upload & Custom Path Inputs with Preview -->
+            <div style="display: grid; grid-template-columns: 1fr 120px; gap: 16px; margin-top: 12px; align-items: start;">
+              <div>
+                <!-- File Upload Input -->
+                <div>
+                  <label for="prod-image-file" style="font-size:10px; color:var(--text-muted); display: block;">Upload Image File</label>
+                  <input type="file" id="prod-image-file" accept="image/*" class="form-input" style="padding: 6px 12px; margin-top: 4px;" />
+                </div>
+                <!-- Custom Image Input -->
+                <div style="margin-top:12px;">
+                  <label for="prod-custom-img" style="font-size:10px; color:var(--text-muted);">Or enter Custom Image Path/URL</label>
+                  <input type="text" id="prod-custom-img" class="form-input" style="padding: 8px 12px; margin-top: 4px;" placeholder="assets/products/filename.webp or http://url..." />
+                </div>
+              </div>
+              
+              <!-- Image Preview Box -->
+              <div style="text-align: center;">
+                <span style="font-size:10px; color:var(--text-muted); display:block; margin-bottom:4px;">Preview</span>
+                <div style="width: 120px; height: 120px; border: 1px solid rgba(201, 162, 77, 0.2); border-radius: 6px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: rgba(255,255,255,0.02);">
+                  <img id="prod-img-preview" src="assets/products/fleur-dor-01_amora_noir_fleur_dor_hero.webp" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Preview" />
+                </div>
+              </div>
             </div>
           </div>
 
@@ -1260,19 +1279,30 @@
     // DIALOG CONTROL & SAVE OPERATIONS
     // ============================================================
 
+    // Image Preview utility
+    function updatePreview(src) {
+      const previewImg = document.getElementById('prod-img-preview');
+      if (previewImg) {
+        previewImg.src = src || 'assets/products/fleur-dor-01_amora_noir_fleur_dor_hero.webp';
+      }
+    }
+
     // Handle Image Selector clicks
     document.querySelectorAll('.image-option').forEach(option => {
       option.addEventListener('click', () => {
         document.querySelectorAll('.image-option').forEach(o => o.classList.remove('selected'));
         option.classList.add('selected');
         selectedImgPath = option.getAttribute('data-img-path');
-        // Clear custom path input if choosing from grid
+        // Clear custom path and file inputs
         document.getElementById('prod-custom-img').value = '';
+        document.getElementById('prod-image-file').value = '';
+        updatePreview(selectedImgPath);
       });
     });
 
     // Handle typing in Custom Image input (deselect grid options)
     document.getElementById('prod-custom-img').addEventListener('input', (e) => {
+      document.getElementById('prod-image-file').value = ''; // clear file
       if (e.target.value.trim() !== '') {
         document.querySelectorAll('.image-option').forEach(o => o.classList.remove('selected'));
         selectedImgPath = e.target.value.trim();
@@ -1281,6 +1311,22 @@
         const firstOpt = document.querySelector('.image-option');
         firstOpt.classList.add('selected');
         selectedImgPath = firstOpt.getAttribute('data-img-path');
+      }
+      updatePreview(selectedImgPath);
+    });
+
+    // Handle file upload input (reads as base64 and sets as selectedImgPath)
+    document.getElementById('prod-image-file').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          document.querySelectorAll('.image-option').forEach(o => o.classList.remove('selected'));
+          document.getElementById('prod-custom-img').value = ''; // clear custom path
+          selectedImgPath = evt.target.result; // Base64 Data URL
+          updatePreview(selectedImgPath);
+        };
+        reader.readAsDataURL(file);
       }
     });
 
@@ -1293,12 +1339,14 @@
       document.getElementById('prod-base-notes').value = '';
       document.getElementById('dialog-product-title').textContent = 'Add New Product';
       
-      // Reset Image grid selection to first
+      // Reset Image selection & preview to default
       document.querySelectorAll('.image-option').forEach(o => o.classList.remove('selected'));
       const firstOpt = document.querySelector('.image-option');
       firstOpt.classList.add('selected');
       selectedImgPath = firstOpt.getAttribute('data-img-path');
       document.getElementById('prod-custom-img').value = '';
+      document.getElementById('prod-image-file').value = '';
+      updatePreview(selectedImgPath);
 
       dialogProduct.showModal();
     });
@@ -1343,6 +1391,8 @@
       } else {
         document.getElementById('prod-custom-img').value = '';
       }
+      document.getElementById('prod-image-file').value = '';
+      updatePreview(selectedImgPath);
 
       document.getElementById('dialog-product-title').textContent = 'Edit Product';
       dialogProduct.showModal();
