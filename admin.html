@@ -722,9 +722,10 @@
               <!-- Image Preview Box -->
               <div style="text-align: center;">
                 <span style="font-size:10px; color:var(--text-muted); display:block; margin-bottom:4px;">Preview</span>
-                <div style="width: 120px; height: 120px; border: 1px solid rgba(201, 162, 77, 0.2); border-radius: 6px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: rgba(255,255,255,0.02);">
+                <div style="width: 120px; height: 120px; border: 1px solid rgba(201, 162, 77, 0.2); border-radius: 6px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: rgba(255,255,255,0.02); margin-bottom: 8px;">
                   <img id="prod-img-preview" src="assets/products/fleur-dor-01_amora_noir_fleur_dor_hero.webp" style="max-width: 100%; max-height: 100%; object-fit: contain;" alt="Preview" />
                 </div>
+                <button type="button" class="btn-gold-outline" id="btn-delete-image" style="padding: 4px 8px; font-size: 10px; border-color: #E57373; color: #E57373; border-radius: 4px; width: 100%; cursor: pointer;">Delete / Reset Image</button>
               </div>
             </div>
           </div>
@@ -1328,6 +1329,20 @@
         };
         reader.readAsDataURL(file);
       }
+    });
+
+    // Handle Delete/Reset Image button click
+    document.getElementById('btn-delete-image').addEventListener('click', () => {
+      // Clear file upload input
+      document.getElementById('prod-image-file').value = '';
+      // Clear custom path input
+      document.getElementById('prod-custom-img').value = '';
+      // Deselect all options in the grid
+      document.querySelectorAll('.image-option').forEach(o => o.classList.remove('selected'));
+      // Set to fallback placeholder path
+      selectedImgPath = 'assets/logo.webp';
+      // Update preview to fallback placeholder
+      updatePreview(selectedImgPath);
     });
 
     // Open add modal
