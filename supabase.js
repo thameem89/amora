@@ -3,8 +3,8 @@
 const supabaseUrl = 'https://sxahfgeuphfkdymfgvlv.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN4YWhmZ2V1cGhma2R5bWZndmx2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM1MjA0OTIsImV4cCI6MjA5OTA5NjQ5Mn0.wu-7QuXpMxQgjFGf7ElXU86lgIW0Lo0PnYqUeRwMcGs';
 
-// Initialize Supabase Client
-const supabase = window.supabase ? window.supabase.createClient(supabaseUrl, supabaseKey) : null;
+// Initialize Supabase Client - renamed to supabaseClient to avoid CDN global naming clash
+const supabaseClient = window.supabase ? window.supabase.createClient(supabaseUrl, supabaseKey) : null;
 
 // Default products to seed on first run
 const defaultProducts = [
@@ -61,11 +61,11 @@ const defaultProducts = [
 window.db = {
   // Fetch all products
   async getProducts() {
-    if (!supabase) {
+    if (!supabaseClient) {
       console.warn('Supabase client not loaded, falling back to LocalStorage.');
       return JSON.parse(localStorage.getItem('amora_products')) || [];
     }
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
       .from('products')
       .select('*')
       .order('name', { ascending: true });
@@ -78,11 +78,11 @@ window.db = {
 
   // Fetch a single product by ID
   async getProduct(id) {
-    if (!supabase) {
+    if (!supabaseClient) {
       const products = JSON.parse(localStorage.getItem('amora_products')) || [];
       return products.find(p => p.id === id);
     }
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
       .from('products')
       .select('*')
       .eq('id', id)
@@ -107,9 +107,9 @@ window.db = {
     }
     localStorage.setItem('amora_products', JSON.stringify(localProducts));
 
-    if (!supabase) return true;
+    if (!supabaseClient) return true;
 
-    const { error } = await supabase.from('products').upsert(product);
+    const { error } = await supabaseClient.from('products').upsert(product);
     if (error) {
       console.error('Error saving product to Supabase:', error);
       return false;
@@ -124,9 +124,9 @@ window.db = {
     localProducts = localProducts.filter(p => p.id !== id);
     localStorage.setItem('amora_products', JSON.stringify(localProducts));
 
-    if (!supabase) return true;
+    if (!supabaseClient) return true;
 
-    const { error } = await supabase.from('products').delete().eq('id', id);
+    const { error } = await supabaseClient.from('products').delete().eq('id', id);
     if (error) {
       console.error('Error deleting product from Supabase:', error);
       return false;
@@ -136,11 +136,11 @@ window.db = {
 
   // Fetch all orders
   async getOrders() {
-    if (!supabase) {
+    if (!supabaseClient) {
       console.warn('Supabase client not loaded, falling back to LocalStorage.');
       return JSON.parse(localStorage.getItem('amora_orders')) || [];
     }
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
       .from('orders')
       .select('*')
       .order('date', { ascending: false });
@@ -158,9 +158,9 @@ window.db = {
     localOrders.push(order);
     localStorage.setItem('amora_orders', JSON.stringify(localOrders));
 
-    if (!supabase) return true;
+    if (!supabaseClient) return true;
 
-    const { error } = await supabase.from('orders').insert(order);
+    const { error } = await supabaseClient.from('orders').insert(order);
     if (error) {
       console.error('Error saving order to Supabase:', error);
       return false;
@@ -178,9 +178,9 @@ window.db = {
       localStorage.setItem('amora_orders', JSON.stringify(localOrders));
     }
 
-    if (!supabase) return true;
+    if (!supabaseClient) return true;
 
-    const { error } = await supabase
+    const { error } = await supabaseClient
       .from('orders')
       .update({ status })
       .eq('id', orderId);
@@ -193,9 +193,9 @@ window.db = {
 
   // Auto-seed Supabase database with default products if empty
   async seedProductsIfNeeded() {
-    if (!supabase) return;
+    if (!supabaseClient) return;
     try {
-      const { count, error } = await supabase
+      const { count, error } = await supabaseClient
         .from('products')
         .select('*', { count: 'exact', head: true });
       if (error) {
@@ -204,7 +204,7 @@ window.db = {
       }
       if (count === 0) {
         console.log('Database empty. Seeding default products to Supabase...');
-        const { error: seedError } = await supabase.from('products').insert(defaultProducts);
+        const { error: seedError } = await supabaseClient.from('products').insert(defaultProducts);
         if (seedError) {
           console.error('Error seeding default products:', seedError);
         }
